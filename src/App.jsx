@@ -5,28 +5,22 @@ import "./App.css";
 // Components
 import Home from "./components/Home";
 import TopScorers from "./components/topScorers";
-import DropDownSeason from './components/DropDownSeason'
 
 function App() {
   return (
-    <div>
-      <h1 class="text-5xl font-bold underline text-center">NBA Data</h1>
+    <div class='bg-gray-100 min-h-screen'>
+      <h1 class="text-3xl font-bold underline p-4 bg-blue-600 text-white">NBA Data</h1>
 
-      <nav class='mb-4'>
-        <ul>
+      <nav class='p-4 bg-blue-500'>
+        <ul class='flex space-x-4'>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" class='text-white'>Home</Link>
           </li>
           <li>
-            <Link to="/topscorers">Top Scorers</Link>
+            <Link to="/topscorers" class='text-white'>Top Scorers</Link>
           </li>
         </ul>
       </nav>
-
-      <div class='mx-auto mt-4'>
-        <DropDownSeason />
-      </div>
-
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route  path="/topscorers" element={<TopScorers/>} />
