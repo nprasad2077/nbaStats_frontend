@@ -11,18 +11,18 @@ React Frontend application for my NBA stats API.
 
 2. Backend API
 	-REST or GraphQL
-	- Flask (Python): Lightweight and easy to set up, suitable for small to medium projects.
+	~~- Flask (Python): Lightweight and easy to set up, suitable for small to medium projects.~~
 	- Django (Python): A more comprehensive framework that includes an ORM and admin panel out-of-the-box.
-	- Express (Node.js): A fast and minimalistic web framework for Node.js.
-	- Ruby on Rails (Ruby): A powerful and mature full-stack web framework.
+	~~- Express (Node.js): A fast and minimalistic web framework for Node.js.~~
+	~~- Ruby on Rails (Ruby): A powerful and mature full-stack web framework.~~
 &nbsp;  
 
 3. Frontend
 	- React/Redux
-	- D3.js
+	~~- D3.js~~
 	- Chart.js
-	- Highcharts
-	- Websockets or Server-Sent Events
+	~~- Highcharts~~
+	~~- Websockets or Server-Sent Events~~
 &nbsp;  
 4. Deploy
 
