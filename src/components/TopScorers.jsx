@@ -90,18 +90,24 @@ const TopScorers = () => {
 
   return (
     <div class="text-center">
-      <DropDownSeason selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason}/>
-      <h1 class="text-3xl font-semibold antialiased text-center">
+      <div class='ml-10'>
+        <DropDownSeason selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason}/>
+      </div>
+      
+      <h1 class="text-3xl font-semibold antialiased text-center mb-4">
         Top 20 Scorers for {selectedSeason.season}
       </h1>
       <ul>
         {topScorers.map((player) => (
-          <li key={player.id}>
+          <li key={player.id} class='font-sem'>
             {player.name} - {player.PTS} points
           </li>
         ))}
       </ul>
-      <TopScorersChart topScorers={topScorers} />
+      <div class='mt-4'>
+        <TopScorersChart topScorers={topScorers} />
+      </div>
+      
     </div>
   );
 };
