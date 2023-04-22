@@ -5,6 +5,7 @@ import "./App.css";
 // Components
 import Home from "./components/Home";
 import TopScorers from "./components/topScorers";
+import PointTrend from "./components/PointTrend";
 
 function App() {
   return (
@@ -19,11 +20,15 @@ function App() {
           <li>
             <Link to="/topscorers" class='text-white'>Top Scorers</Link>
           </li>
+          <li>
+            <Link to="/three_two_point_trends" class='text-white'>Three Point Shooting Data</Link>
+          </li>
         </ul>
       </nav>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route  path="/topscorers" element={<TopScorers/>} />
+        <Route path='/three_two_point_trends' element={<PointTrend />} />
       </Routes>
     </div>
   );
