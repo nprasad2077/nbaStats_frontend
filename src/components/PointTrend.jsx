@@ -11,7 +11,11 @@ const PointTrend = () => {
 
   console.log(points);
 
-  return <div>PointTrend</div>;
+  return (
+    <div>
+      <h1 class="text-3xl font-semibold antialiased text-center mb-4">Point Trends</h1>
+    </div>
+  );
 };
 
 export default PointTrend;

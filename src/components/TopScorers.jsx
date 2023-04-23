@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect, Fragment } from "react";
-import axios from "axios";
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import TopScorersChart from './TopScorersChart'
