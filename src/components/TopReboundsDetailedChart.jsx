@@ -25,9 +25,18 @@ const options = {
   elements: {
     bar: {
       borderWidth: 2,
+      barPercentage: 0.6, // Adjust this value to control the bar width
+      categoryPercentage: 0.8, // Adjust this value to control the space between bars
     },
   },
   responsive: true,
+  scales: {
+    y: {
+      ticks: {
+        padding: 10,
+      },
+    },
+  },
   plugins: {
     legend: {
       position: 'right',
@@ -36,6 +45,9 @@ const options = {
       display: true,
       text: 'Top 20 Total Rebounds per Season (with ORB & DRB)',
     },
+  },
+  bar: {
+    groupSpacing: 10,
   },
 };
 
@@ -53,18 +65,21 @@ const TopReboundsDetailedChart = ({ topTRB }) => {
         data: playerTRB,
         borderColor: 'rgb(75, 192, 192)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        barThickness: 10,
       },
       {
         label: 'Offensive Rebounds',
         data: playerORB,
         borderColor: 'rgb(255, 206, 86)',
         backgroundColor: 'rgba(255, 206, 86, 0.2)',
+        barThickness: 10,
       },
       {
         label: 'Defensive Rebounds',
         data: playerDRB,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        barThickness: 10,
       },
     ],
   };
