@@ -57,14 +57,14 @@ const TopReboundsDetailedChart = ({ topTRB }) => {
       {
         label: 'Offensive Rebounds',
         data: playerORB,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgb(255, 206, 86)',
+        backgroundColor: 'rgba(255, 206, 86, 0.2)',
       },
       {
         label: 'Defensive Rebounds',
         data: playerDRB,
-        borderColor: 'rgb(54, 162, 235)',
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
       },
     ],
   };

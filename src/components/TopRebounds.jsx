@@ -3,6 +3,7 @@ import { useState, useEffect, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import TopReboundsChart from "./TopReboundsChart";
+import TopReboundsDetailedChart from "./TopReboundsDetailedChart";
 
 const seasons = [
   { season: "2022-2023" },
@@ -120,6 +121,9 @@ const TopRebounds = () => {
       </ul>
       <div className="mt-4">
         <TopReboundsChart topTRB={topTRB} topORB={topORB} topDRB={topDRB} />
+      </div>
+      <div className="mt-4">
+        <TopReboundsDetailedChart topTRB={topTRB} />
       </div>
     </div>
   );
