@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import TopScorers from "./components/topScorers";
 import PointTrend from "./components/PointTrend";
 import TopAssists from './components/TopAssists'
+import TopRebounds from "./components/TopRebounds";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
           <li>
             <Link to="/top_assists" class='text-white'>Top Assists</Link>
           </li>
+          <li>
+            <Link to="/top_rebounds" class='text-white'>Top Rebounders</Link>
+          </li>
         </ul>
       </nav>
       <Routes>
@@ -34,6 +38,7 @@ function App() {
         <Route  path="/topscorers" element={<TopScorers/>} />
         <Route path='/three_two_point_trends' element={<PointTrend />} />
         <Route path='/top_assists' element={<TopAssists />} />
+        <Route path='/top_rebounds' element={<TopRebounds />} />
       </Routes>
     </div>
   );
