@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 
 const PointTrend = () => {
   const [points, setPoints] = useState([]);
@@ -58,6 +58,36 @@ const PointTrend = () => {
     };
   }, [points]);
 
+  const chartDatasetPercentages = useMemo(() => {
+    const labels = points.map((item) => item.season);
+    const threePtPercentage = points.map(
+      (item) => (item.avg_three_made / item.avg_three_attempts) * 100
+    );
+    const twoPtPercentage = points.map(
+      (item) => (item.avg_two_made / item.avg_two_attempts) * 100
+    );
+
+    return {
+      labels,
+      datasets: [
+        {
+          label: "3pt FG%",
+          data: threePtPercentage,
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgba(75, 192, 192, 1)",
+          borderWidth: 1,
+        },
+        {
+          label: "2pt FG%",
+          data: twoPtPercentage,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
+          borderWidth: 1,
+        },
+      ],
+    };
+  }, [points]);
+
   return (
     <div>
       <h1 className="text-3xl font-semibold antialiased text-center mb-4">
@@ -76,6 +106,10 @@ const PointTrend = () => {
           </h2>
           <Line data={chartDataset2pt} />
         </div>
+      </div>
+      <div className="mt-8">
+        <h2 className="text-xl font-semibold antialiased text-center mb-4">2pt vs 3pt Field Goal Percentages per Season</h2>
+        <Bar data={chartDatasetPercentages} />
       </div>
     </div>
   );
