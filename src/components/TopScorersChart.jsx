@@ -1,5 +1,9 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import { Chart } from 'chart.js';
+import { LinearScale } from 'chart.js/auto';
+
+Chart.register(LinearScale);
 
 const TopScorersChart = ({ topScorers }) => {
   const playerNames = topScorers.map((player) => player.name);
@@ -21,7 +25,9 @@ const TopScorersChart = ({ topScorers }) => {
   const options = {
     scales: {
       y: {
-        beginAtZero: true,
+        ticks: {
+          beginAtZero: true,
+        },
       },
     },
   };

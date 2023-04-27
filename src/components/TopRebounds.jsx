@@ -1,22 +1,22 @@
 import React from "react";
 import { useState, useEffect, Fragment } from "react";
-import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import TopScorersChart from './TopScorersChart'
+import { Listbox, Transition } from "@headlessui/react";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import TopReboundsChart from "./TopReboundsChart";
+import TopReboundsDetailedChart from "./TopReboundsDetailedChart";
 
 const seasons = [
-  { season: '2022-2023' },
-  { season: '2021-2022' },
-  { season: '2020-2021' },
-  { season: '2019-2020' },
-  { season: '2018-2019' },
-  { season: '2017-2018' },
-  { season: '2016-2017' },
-  { season: '2015-2016' },
-  { season: '2014-2015' },
-]
-
-const DropDownSeason = ({selectedSeason, setSelectedSeason}) => {
+  { season: "2022-2023" },
+  { season: "2021-2022" },
+  { season: "2020-2021" },
+  { season: "2019-2020" },
+  { season: "2018-2019" },
+  { season: "2017-2018" },
+  { season: "2016-2017" },
+  { season: "2015-2016" },
+  { season: "2014-2015" },
+];
+const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   return (
     <div className="w-72 mt-8">
       <Listbox value={selectedSeason} onChange={setSelectedSeason}>
@@ -42,7 +42,7 @@ const DropDownSeason = ({selectedSeason, setSelectedSeason}) => {
                   key={seasonIdx}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? 'bg-indigo-100 text-indigo-900' : 'text-gray-900'
+                      active ? "bg-indigo-100 text-indigo-900" : "text-gray-900"
                     }`
                   }
                   value={season}
@@ -51,7 +51,7 @@ const DropDownSeason = ({selectedSeason, setSelectedSeason}) => {
                     <>
                       <span
                         className={`block truncate ${
-                          selected ? 'font-medium' : 'font-normal'
+                          selected ? "font-medium" : "font-normal"
                         }`}
                       >
                         {season.season}
@@ -70,43 +70,63 @@ const DropDownSeason = ({selectedSeason, setSelectedSeason}) => {
         </div>
       </Listbox>
     </div>
-  )
-}
+  );
+};
 
-
-const TopScorers = () => {
-  const [selectedSeason, setSelectedSeason] = useState(seasons[0])
-  const [topScorers, setTopScorers] = useState([]);
+const TopRebounds = () => {
+  const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
+  const [topTRB, setTopTRB] = useState([]);
+  const [topORB, setTopORB] = useState([]);
+  const [topDRB, setTopDRB] = useState([]);
 
   useEffect(() => {
-    const tailEndSeason = selectedSeason.season.split('-')[1]
-    fetch(`http://127.0.0.1:8000/api/playerdata/topscorers/season/${tailEndSeason}/`)
+    const tailEndSeason = selectedSeason.season.split("-")[1];
+    fetch(`http://127.0.0.1:8000/api/top_rebounds/${tailEndSeason}/`)
       .then((response) => response.json())
-      .then((data) => setTopScorers(data.results));
+      .then((data) => setTopTRB(data.results));
+    fetch(`http://127.0.0.1:8000/api/top_rebounds_offensive/${tailEndSeason}/`)
+      .then((response) => response.json())
+      .then((data) => setTopORB(data.results));
+
+    fetch(`http://127.0.0.1:8000/api/top_rebounds_defensive/${tailEndSeason}/`)
+      .then((response) => response.json())
+      .then((data) => setTopDRB(data.results));
   }, [selectedSeason]);
 
   return (
-    <div class="text-center">
-      <div class='ml-10'>
-        <DropDownSeason selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason}/>
+    <div className="text-center">
+      <div className="ml-10">
+        <DropDownSeason
+          selectedSeason={selectedSeason}
+          setSelectedSeason={setSelectedSeason}
+        />
       </div>
-      
-      <h1 class="text-3xl font-semibold antialiased text-center mb-4">
-        Top 20 Scorers for {selectedSeason.season}
+
+      <h1 className="text-3xl font-semibold antialiased text-center mb-4">
+        Top Rebounders for {selectedSeason.season}
       </h1>
       <ul>
-        {topScorers.map((player) => (
-          <li key={player.id} class='font-sem'>
-            {player.name} - {player.PTS} points
-          </li>
-        ))}
+        <li className="font-sem">
+          Top Total Rebounds - {topTRB[0]?.name || "N/A"} -{" "}
+          {topTRB[0]?.TRB || 0}
+        </li>
+        <li className="font-sem">
+          Top Offensive Rebounds - {topORB[0]?.name || "N/A"} -{" "}
+          {topORB[0]?.ORB || 0}
+        </li>
+        <li className="font-sem">
+          Top Defensive Rebounds - {topDRB[0]?.name || "N/A"} -{" "}
+          {topDRB[0]?.DRB || 0}
+        </li>
       </ul>
-      <div class='mt-4'>
-        <TopScorersChart topScorers={topScorers} />
+      <div className="mt-4">
+        <TopReboundsChart topTRB={topTRB} topORB={topORB} topDRB={topDRB} />
       </div>
-      
+      <div className="mt-4">
+        <TopReboundsDetailedChart topTRB={topTRB} />
+      </div>
     </div>
   );
 };
 
-export default TopScorers;
+export default TopRebounds;
