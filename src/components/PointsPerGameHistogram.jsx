@@ -2,7 +2,6 @@ import React, { useState, useEffect, Fragment } from "react";
 import Histogram from "./Histogram";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import TopScorersChart from "./TopScorersChart";
 
 const seasons = [
   { season: "2022-2023" },
