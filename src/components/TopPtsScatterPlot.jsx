@@ -80,7 +80,8 @@ const TopPtsScatterPlot = () => {
                   beforeBody: (context) => {
                     const dataIndex = context[0].dataIndex;
                     const datasetIndex = context[0].datasetIndex;
-                    const season = groupedData[context[0].dataset.label][dataIndex].season;
+                    const season =
+                      groupedData[context[0].dataset.label][dataIndex].season;
                     return `Season: ${season}`;
                   },
                   label: (context) => {
@@ -91,7 +92,7 @@ const TopPtsScatterPlot = () => {
                 },
               },
             },
-          },                   
+          },
         });
         setChart(newChart);
       }
@@ -103,19 +104,37 @@ const TopPtsScatterPlot = () => {
   const getColor = (playerName) => {
     // Add your logic here to assign a unique color to each player
     // or use a predefined color map
-    if (playerName === 'James Harden') {
-        return "rgba(255, 0, 0, 0.6)";
-    } if (playerName === 'LeBron James'){
-        return "rgba(0, 204, 0, 0.6)"
-    } if(playerName === 'Kevin Durant'){
-        return "rgba(127, 0, 255, 0.6)"
-    } else {
-        return "rgba(75, 192, 192, 0.6)";
+    if (playerName === "James Harden") {
+      return "rgba(255, 0, 0, 0.7)";
     }
-    
+    if (playerName === "LeBron James") {
+      return "rgba(102, 0, 204, 0.6)";
+    }
+    if (playerName === "Kevin Durant") {
+      return "rgba(0, 45, 98, 0.4)";
+    }
+    if (playerName === "Stephen Curry") {
+      return "rgba(253, 185, 39, 1.0)";
+    } 
+    if (playerName === "Giannis Antetokounmpo") {
+        return "rgba(0, 71, 26, 0.7)";
+      }
+      if (playerName === "Russell Westbrook") {
+        return "rgba(26, 66, 138, 1.0)";
+      } else {
+      return "rgba(75, 192, 192, 0.6)";
+    }
   };
 
-  return <canvas ref={chartRef} />;
+  return (
+    <div>
+      <h1 className="text-3xl font-semibold antialiased text-center my-4">
+        Top 25 Scorers since 2013-2014 season visualized by Total Points/Win
+        Shares per season
+      </h1>
+      <canvas ref={chartRef} />
+    </div>
+  );
 };
 
 export default TopPtsScatterPlot;
