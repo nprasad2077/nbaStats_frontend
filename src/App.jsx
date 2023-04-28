@@ -9,6 +9,7 @@ import PointTrend from "./components/PointTrend";
 import TopAssists from './components/TopAssists'
 import TopRebounds from "./components/TopRebounds";
 import PointsPerGameHistogram from "./components/PointsPerGameHistogram";
+import TopPtsScatterPlot from "./components/TopPtsScatterPlot";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
           <li>
             <Link to="/ppg_histogram" class='text-white'>Points Per Game Histogram</Link>
           </li>
+          <li>
+            <Link to="/top_pts_scatter_plot" class='text-white'>Top PTS Scatter Plot</Link>
+          </li>
         </ul>
       </nav>
       <Routes>
@@ -44,6 +48,7 @@ function App() {
         <Route path='/top_assists' element={<TopAssists />} />
         <Route path='/top_rebounds' element={<TopRebounds />} />
         <Route path='/ppg_histogram' element={<PointsPerGameHistogram />} />
+        <Route path='/top_pts_scatter_plot' element={<TopPtsScatterPlot />} />
       </Routes>
     </div>
   );
