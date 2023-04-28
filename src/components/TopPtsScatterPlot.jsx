@@ -107,21 +107,48 @@ const TopPtsScatterPlot = () => {
     if (playerName === "James Harden") {
       return "rgba(255, 0, 0, 0.7)";
     }
+    if (playerName === "Joel Embiid") {
+      return "rgba(255, 0, 0, 0.7)";
+    }
     if (playerName === "LeBron James") {
       return "rgba(102, 0, 204, 0.6)";
     }
     if (playerName === "Kevin Durant") {
       return "rgba(0, 45, 98, 0.4)";
     }
+    if (playerName === "Shai Gilgeous-Alexander") {
+      return "rgba(0, 45, 98, 0.4)";
+    }
     if (playerName === "Stephen Curry") {
       return "rgba(253, 185, 39, 1.0)";
-    } 
+    }
     if (playerName === "Giannis Antetokounmpo") {
-        return "rgba(0, 71, 26, 0.7)";
-      }
-      if (playerName === "Russell Westbrook") {
-        return "rgba(26, 66, 138, 1.0)";
-      } else {
+      return "rgba(0, 71, 26, 0.7)";
+    }
+    if (playerName === "Russell Westbrook") {
+      return "rgba(26, 66, 138, 1.0)";
+    }
+    if (playerName === "Nikola Jokić") {
+      return "rgba(39, 245, 163, 0.8)";
+    }
+    if (playerName === "Damian Lillard") {
+      return "rgba(245, 43, 39, 0.25)";
+    }
+    if (playerName === "Devin Booker") {
+      return "rgba(239, 09, 224, 0.85)";
+    }
+    if (playerName === "Kyrie Irving") {
+      return "rgba(165, 215, 174, 0.86)";
+    } 
+    if (playerName === "Trae Young") {
+      return "rgba(165, 215, 174, 0.86)";
+    }
+    if (playerName === "Jayson Tatum") {
+      return "rgba(6, 137, 30, 1.0)";
+    }
+    if (playerName === "Luka Dončić") {
+      return "rgba(45, 45, 45, 1.0)";
+    } else {
       return "rgba(75, 192, 192, 0.6)";
     }
   };
