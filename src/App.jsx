@@ -37,11 +37,6 @@ function App() {
             </Link>
           </li>
           <li>
-            <Link to="/topscorers_playoffs" class="text-white">
-              Top Scorers in the Playoffs
-            </Link>
-          </li>
-          <li>
             <Link to="/three_two_point_trends" class="text-white">
               Shooting Trends
             </Link>
@@ -49,11 +44,6 @@ function App() {
           <li>
             <Link to="/top_assists" class="text-white">
               Top Assists
-            </Link>
-          </li>
-          <li>
-            <Link to="/top_assists_playoffs" class="text-white">
-              Top Assists Playoffs
             </Link>
           </li>
           <li>
@@ -73,12 +63,22 @@ function App() {
           </li>
           <li>
             <Link to="/top_pts_scatter_plot_2018" class="text-white">
-              Top PTS Scatter Plot since 2018
+              Top PTS Scatter Plot
+            </Link>
+          </li>
+          <li>
+            <Link to="/topscorers_playoffs" class="text-white">
+              Top Scorers in the Playoffs
+            </Link>
+          </li>
+          <li>
+            <Link to="/top_assists_playoffs" class="text-white">
+              Top Assists Playoffs
             </Link>
           </li>
           <li>
             <Link to="/top_pts_scatter_plot_2009_playoffs" class="text-white">
-              Playoffs Top Scorers vs. Win Shares since 2009
+              Playoffs Top Scorers vs. Win Shares
             </Link>
           </li>
           {/* <li>
