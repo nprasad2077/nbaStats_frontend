@@ -43,7 +43,7 @@ function App() {
           </li>
           <li>
             <Link to="/three_two_point_trends" class="text-white">
-              Three Point Shooting Data
+              Shooting Trends
             </Link>
           </li>
           <li>

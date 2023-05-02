@@ -98,13 +98,13 @@ const TopAssistsPlayoffs = () => {
       </div>
 
       <h1 class="text-3xl font-semibold antialiased text-center mb-4">
-        Top 20 Assists for {selectedSeason.season}
+        Top 20 by Total Assists for {selectedSeason.season} Playoffs
       </h1>
 
       <div class="mt-4">
         <TopAssistsChartPlayoffs topAssists={topAssists} />
       </div>
-      
+
       <ul>
         {topAssists.map((player) => (
           <li key={player.id} class="font-sem">

@@ -90,8 +90,8 @@ const PointTrend = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold antialiased text-center mb-4">
-        Point Trends
+      <h1 className="text-3xl font-semibold antialiased text-center my-4">
+        Shooting Trends over NBA Seasons
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>

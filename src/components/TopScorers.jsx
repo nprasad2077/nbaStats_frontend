@@ -96,7 +96,7 @@ const TopScorers = () => {
       </div>
 
       <h1 class="text-3xl font-semibold antialiased text-center mb-4">
-        Top 20 Scorers for {selectedSeason.season}
+        Top 20 Scorers per Game for {selectedSeason.season} Season
       </h1>
       <div class="mt-4">
         <TopScorersChart topScorers={topScorers} />
