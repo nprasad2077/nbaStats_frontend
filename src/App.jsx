@@ -58,14 +58,14 @@ function App() {
           </li>
           <li>
             <Link to="/top_pts_scatter_plot" class="text-white">
-              Top PTS Scatter Plot
+              Top Scorers vs. Win Shares {"(season)"}
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/top_pts_scatter_plot_2018" class="text-white">
               Top PTS Scatter Plot
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/topscorers_playoffs" class="text-white">
               Top Scorers in the Playoffs
@@ -78,7 +78,7 @@ function App() {
           </li>
           <li>
             <Link to="/top_pts_scatter_plot_2009_playoffs" class="text-white">
-              Playoffs Top Scorers vs. Win Shares
+              Top Scorers vs. Win Shares {'(playoffs)'}
             </Link>
           </li>
           {/* <li>

@@ -75,6 +75,19 @@ const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
 const PointsPerGameHistogram = () => {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const [histogramData, setHistogramData] = useState([]);
+  console.log(histogramData);
+
+  const formatResults = histogramData.sort((a, b) => {
+    const [aStart, aEnd] = a.range.split("-").map(Number);
+    const [bStart, bEnd] = b.range.split("-").map(Number);
+
+    return aStart - bStart;
+  });
+
+  const range = histogramData.length > 0 ? formatResults[histogramData.length - 1].range : '';
+  const count = histogramData.length > 0 ? formatResults[histogramData.length - 1].count : '';
+
+
 
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
@@ -95,9 +108,13 @@ const PointsPerGameHistogram = () => {
       </div>
 
       <h1 className="text-3xl font-semibold antialiased text-center mb-4">
-        Points Per Game Histogram for {selectedSeason.season}
+        Points Per Game Histogram for {selectedSeason.season} Season
       </h1>
       <Histogram data={histogramData} />
+      <div>
+        <h2>Top Scoring Points Range: {range} </h2>
+        <h2>Number of Players in Top Scoring Range: {count} </h2>
+      </div>
     </div>
   );
 };

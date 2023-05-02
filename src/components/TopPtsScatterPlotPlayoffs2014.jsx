@@ -11,7 +11,7 @@ const TopPtsScatterPlot2014 = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/top_20_post_2014_PTS_ws/"
+        "http://127.0.0.1:8000/api/top_25_PTS_ws/playoffs/2019/"
       );
       const data = await response.json();
       prepareChartData(data);
