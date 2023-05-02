@@ -3,14 +3,15 @@ import { Chart, ScatterController, LinearScale, PointElement } from "chart.js";
 
 Chart.register(ScatterController, LinearScale, PointElement);
 
-const TopPtsScatterPlot = () => {
-  const chartRef = useRef(null);
+
+const TopPtsScatterPlot2018 = () => {
+    const chartRef = useRef(null);
   const [chart, setChart] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/top_pts_scatter_plot_fast/"
+        "http://127.0.0.1:8000/api/top_pts_scatter_plot_fast_2018/"
       );
       const data = await response.json();
       prepareChartData(data);
@@ -101,6 +102,14 @@ const TopPtsScatterPlot = () => {
     fetchData();
   }, [chart]);
 
+  const distinctColors = [
+    "#E6194B", "#3CB44B", "#FFE119", "#4363D8", "#F58231", "#911EB4",
+    "#46F0F0", "#F032E6", "#BCF60C", "#FABEBE", "#008080", "#E6BEFF",
+    "#9A6324", "#FFFAC8", "#800000", "#AAFFC3", "#808000", "#FFD8B1",
+    "#000075", "#A9A9A9", "#FFFFFF", "#000000"
+  ];
+  
+
   const getColor = (playerName) => {
     // Calculate the brightness of a color based on its RGB components
     const calculateBrightness = (r, g, b) => {
@@ -131,28 +140,22 @@ const TopPtsScatterPlot = () => {
       return color;
     };
   
-    // Create a color map for player names
-    const colorMap = JSON.parse(localStorage.getItem("playerColorMap")) || {};
-  
-    // Check if the player already has an assigned color
-    if (!colorMap[playerName]) {
-      colorMap[playerName] = randomColor();
-      localStorage.setItem("playerColorMap", JSON.stringify(colorMap));
-    }
-  
-    return colorMap[playerName];
+    // Other parts of the getColor function...
   };
+  
+  
+  
   
 
   return (
     <div>
       <h1 className="text-3xl font-semibold antialiased text-center my-4">
-        Top 25 Scorers since 2013-2014 season visualized by Total Points/Win
+        Top 25 Scorers since 2017-2018 season visualized by Total Points/Win
         Shares per season
       </h1>
       <canvas ref={chartRef} />
     </div>
-  );
-};
+  )
+}
 
-export default TopPtsScatterPlot;
+export default TopPtsScatterPlot2018
