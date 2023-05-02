@@ -80,7 +80,7 @@ const TopScorers = () => {
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
     fetch(
-      `http://127.0.0.1:8000/api/playerdata/topscorers/season/${tailEndSeason}/`
+      `https://nba-stats-db.herokuapp.com/api/playerdata/topscorers/season/${tailEndSeason}/`
     )
       .then((response) => response.json())
       .then((data) => setTopScorers(data.results));

@@ -75,7 +75,6 @@ const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
 const PointsPerGameHistogram = () => {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const [histogramData, setHistogramData] = useState([]);
-  console.log(histogramData);
 
   const formatResults = histogramData.sort((a, b) => {
     const [aStart, aEnd] = a.range.split("-").map(Number);
@@ -92,7 +91,7 @@ const PointsPerGameHistogram = () => {
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
     fetch(
-      `http://127.0.0.1:8000/api/points_per_game_histogram/${tailEndSeason}/`
+      `https://nba-stats-db.herokuapp.com/api/points_per_game_histogram/${tailEndSeason}/`
     )
       .then((response) => response.json())
       .then((data) => setHistogramData(data.results));

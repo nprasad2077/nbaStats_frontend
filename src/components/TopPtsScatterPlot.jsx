@@ -10,7 +10,7 @@ const TopPtsScatterPlot = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/top_pts_scatter_plot_fast/"
+        "https://nba-stats-db.herokuapp.com/api/top_pts_scatter_plot_fast/"
       );
       const data = await response.json();
       prepareChartData(data);

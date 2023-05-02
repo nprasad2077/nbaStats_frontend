@@ -78,7 +78,7 @@ const TopAssists = () => {
 
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
-    fetch(`http://127.0.0.1:8000/api/top_assists/${tailEndSeason}/`)
+    fetch(`https://nba-stats-db.herokuapp.com/api/top_assists/${tailEndSeason}/`)
       .then((response) => response.json())
       .then((data) => setTopAssists(data.results));
   }, [selectedSeason]);
