@@ -12,6 +12,8 @@ import PointsPerGameHistogram from "./components/PointsPerGameHistogram";
 import TopPtsScatterPlot from "./components/TopPtsScatterPlot";
 import TopPtsScatterPlot2018 from "./components/TopPtsScatterPlot2018";
 import TopPtsScatterPlotPlayoffs2009 from "./components/TopPtsScatterPlotPlayoffs2009";
+import TopPtsScatterPlotPlayoffs2014 from "./components/TopPtsScatterPlotPlayoffs2014"
+import TopPtsScatterPlotPlayoffs2018 from "./components/TopPtsScatterPlotPlayoffs2018"
 
 function App() {
   return (
@@ -47,6 +49,12 @@ function App() {
           <li>
             <Link to="/top_pts_scatter_plot_2009_playoffs" class='text-white'>Playoffs Top Scorers vs. Win Shares since 2009</Link>
           </li>
+          <li>
+            <Link to="/top_pts_scatter_plot_2014_playoffs" class='text-white'>Playoffs Top Scorers vs. Win Shares since 2014</Link>
+          </li>
+          <li>
+            <Link to="/top_pts_scatter_plot_2018_playoffs" class='text-white'>Playoffs Top Scorers vs. Win Shares since 2018</Link>
+          </li>
         </ul>
       </nav>
       <Routes>
@@ -59,6 +67,8 @@ function App() {
         <Route path='/top_pts_scatter_plot' element={<TopPtsScatterPlot />} />
         <Route path='/top_pts_scatter_plot_2018' element={<TopPtsScatterPlot2018 />} />
         <Route path='/top_pts_scatter_plot_2009_playoffs' element={<TopPtsScatterPlotPlayoffs2009 />} />
+        <Route path='/top_pts_scatter_plot_2014_playoffs' element={<TopPtsScatterPlotPlayoffs2014 />} />
+        <Route path='/top_pts_scatter_plot_2018_playoffs' element={<TopPtsScatterPlotPlayoffs2018 />} />
       </Routes>
     </div>
   );
