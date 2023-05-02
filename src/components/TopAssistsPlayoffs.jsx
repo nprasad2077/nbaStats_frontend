@@ -2,10 +2,9 @@ import React from "react";
 import { useState, useEffect, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import TopScorersChart from "./TopScorersChart";
+import TopAssistsChartPlayoffs from "./TopAssistsChartPlayoffs";
 
 const seasons = [
-  { season: "2022-2023" },
   { season: "2021-2022" },
   { season: "2020-2021" },
   { season: "2019-2020" },
@@ -13,7 +12,12 @@ const seasons = [
   { season: "2017-2018" },
   { season: "2016-2017" },
   { season: "2015-2016" },
-  { season: "2014-2015" },
+  { season: '2014-2015' },
+  { season: '2013-2014' },
+  { season: '2012-2013' },
+  { season: '2011-2012' },
+  { season: '2010-2011' },
+  { season: '2009-2010' },
 ];
 
 const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
@@ -73,17 +77,15 @@ const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   );
 };
 
-const TopScorers = () => {
+const TopAssistsPlayoffs = () => {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
-  const [topScorers, setTopScorers] = useState([]);
+  const [topAssists, setTopAssists] = useState([]);
 
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
-    fetch(
-      `http://127.0.0.1:8000/api/playerdata/topscorers/season/${tailEndSeason}/`
-    )
+    fetch(`http://127.0.0.1:8000/api/top_assists/playoffs/${tailEndSeason}/`)
       .then((response) => response.json())
-      .then((data) => setTopScorers(data.results));
+      .then((data) => setTopAssists(data.results));
   }, [selectedSeason]);
 
   return (
@@ -96,20 +98,23 @@ const TopScorers = () => {
       </div>
 
       <h1 class="text-3xl font-semibold antialiased text-center mb-4">
-        Top 20 Scorers for {selectedSeason.season}
+        Top 20 Assists for {selectedSeason.season}
       </h1>
+
       <div class="mt-4">
-        <TopScorersChart topScorers={topScorers} />
+        <TopAssistsChartPlayoffs topAssists={topAssists} />
       </div>
+      
       <ul>
-        {topScorers.map((player) => (
+        {topAssists.map((player) => (
           <li key={player.id} class="font-sem">
-            {player.name} - {player.PTS} points
+            {player.player_name} - {player.AST} Assists
           </li>
         ))}
       </ul>
+      
     </div>
   );
 };
 
-export default TopScorers;
+export default TopAssistsPlayoffs;

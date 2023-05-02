@@ -5,8 +5,8 @@ import { LinearScale } from 'chart.js/auto';
 
 Chart.register(LinearScale);
 
-const TopScorersChart = ({ topScorers }) => {
-  const playerNames = topScorers.map((player) => player.name);
+const TopScorersChartPlayoffs = ({ topScorers }) => {
+  const playerNames = topScorers.map((player) => player.player_name);
   const playerPoints = topScorers.map((player) => player.PTS);
 
   const data = {
@@ -36,4 +36,4 @@ const TopScorersChart = ({ topScorers }) => {
   return <Bar data={data} options={options} />;
 };
 
-export default TopScorersChart;
+export default TopScorersChartPlayoffs;

@@ -11,6 +11,7 @@ const Histogram = ({ data }) => {
       (a, b) =>
         parseFloat(a.range.split("-")[0]) - parseFloat(b.range.split("-")[0])
     );
+  // Here, I've added the .sort() function to the formattedData array to sort the data based on the lower bound of the range. The parseFloat(a.range.split('-')[0]) - parseFloat(b.range.split('-')[0]) expression extracts the lower bound of the range, converts it to a number, and then calculates the difference between the two numbers to determine the sorting order.
 
   const chartData = {
     labels: formattedData.map((entry) => entry.range),

@@ -2,10 +2,9 @@ import React from "react";
 import { useState, useEffect, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import TopScorersChart from "./TopScorersChart";
+import TopScorersChartPlayoffs from "./TopScorersChartPlayoffs";
 
 const seasons = [
-  { season: "2022-2023" },
   { season: "2021-2022" },
   { season: "2020-2021" },
   { season: "2019-2020" },
@@ -14,6 +13,11 @@ const seasons = [
   { season: "2016-2017" },
   { season: "2015-2016" },
   { season: "2014-2015" },
+  { season: "2013-2014" },
+  { season: "2012-2013" },
+  { season: "2011-2012" },
+  { season: "2010-2011" },
+  { season: "2009-2010" },
 ];
 
 const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
@@ -73,14 +77,14 @@ const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   );
 };
 
-const TopScorers = () => {
+const TopScorersPlayoffs = () => {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const [topScorers, setTopScorers] = useState([]);
 
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
     fetch(
-      `http://127.0.0.1:8000/api/playerdata/topscorers/season/${tailEndSeason}/`
+      `http://127.0.0.1:8000/api/playerdata/topscorers/playoffs/${tailEndSeason}/`
     )
       .then((response) => response.json())
       .then((data) => setTopScorers(data.results));
@@ -99,12 +103,12 @@ const TopScorers = () => {
         Top 20 Scorers for {selectedSeason.season}
       </h1>
       <div class="mt-4">
-        <TopScorersChart topScorers={topScorers} />
+        <TopScorersChartPlayoffs topScorers={topScorers} />
       </div>
       <ul>
         {topScorers.map((player) => (
           <li key={player.id} class="font-sem">
-            {player.name} - {player.PTS} points
+            {player.player_name} - {player.PTS} points
           </li>
         ))}
       </ul>
@@ -112,4 +116,4 @@ const TopScorers = () => {
   );
 };
 
-export default TopScorers;
+export default TopScorersPlayoffs;
