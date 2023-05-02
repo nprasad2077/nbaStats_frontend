@@ -105,7 +105,7 @@ const TopScorersPlayoffs = () => {
       <div class="mt-4">
         <TopScorersChartPlayoffs topScorers={topScorers} />
       </div>
-      <ul>
+      <ul class='mt-6'>
         {topScorers.map((player) => (
           <li key={player.id} class="font-sem">
             {player.player_name} - {player.PTS} points

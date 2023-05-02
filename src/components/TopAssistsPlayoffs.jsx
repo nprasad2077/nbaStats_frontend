@@ -105,7 +105,7 @@ const TopAssistsPlayoffs = () => {
         <TopAssistsChartPlayoffs topAssists={topAssists} />
       </div>
 
-      <ul>
+      <ul class='mt-6'>
         {topAssists.map((player) => (
           <li key={player.id} class="font-sem">
             {player.player_name} - {player.AST} Assists

@@ -103,7 +103,7 @@ const TopRebounds = () => {
       </div>
 
       <h1 className="text-3xl font-semibold antialiased text-center mb-4">
-        Top Rebounders for {selectedSeason.season}
+        Top Rebounders per Game for {selectedSeason.season} Season
       </h1>
       <ul>
         <li className="font-sem">

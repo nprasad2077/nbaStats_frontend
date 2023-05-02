@@ -190,6 +190,32 @@ const TopPtsScatterPlot = () => {
         Shares per season
       </h1>
       <canvas ref={chartRef} />
+      <div class='flex flex-col'>
+        <h3 class='font-sans subpixel-antialiased p-8'>
+          Data is derived by first creating a list of the top 25 scoring players
+          by total points in the regular season since the 2013-2014 season.
+          Then, the players are mapped on the chart by Total Points on this
+          X-axis and Win Shares on Y-Axis. This shows any correlation between a
+          player's individual points scored, and win shares*{" "}
+          {"(used to determine how many wins a player has contributed to his/her team)."}{" "}
+        </h3>
+        <p class='text-xs italic px-8 py-10'>
+          *Win Shares is a basketball statistic that was created by basketball
+          analyst and statistician Bill James. The statistic is designed to
+          measure a player's overall contribution to his team's success, by
+          calculating the number of wins a player has contributed to his team
+          over the course of a season. The calculation of Win Shares is based on
+          several factors, including a player's offensive and defensive
+          contributions, as well as his playing time and the overall performance
+          of his team. The result is a single number that represents the number
+          of wins a player has contributed to his team. Win Shares can be used
+          to compare players from different eras, as well as to evaluate a
+          player's performance relative to his teammates and competitors. It is
+          a popular statistic among basketball analysts and fans, as it provides
+          a more comprehensive picture of a player's value than traditional
+          statistics like points or rebounds.
+        </p>
+      </div>
     </div>
   );
 };
