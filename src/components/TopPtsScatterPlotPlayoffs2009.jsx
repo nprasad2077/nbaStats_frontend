@@ -4,14 +4,14 @@ import { Chart, ScatterController, LinearScale, PointElement } from "chart.js";
 Chart.register(ScatterController, LinearScale, PointElement);
 
 
-const TopPtsScatterPlot2018 = () => {
+const TopPtsScatterPlot2009 = () => {
   const chartRef = useRef(null);
   const [chart, setChart] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/top_pts_scatter_plot_fast_2018/"
+        "http://127.0.0.1:8000/api/top_20_post_2009_PTS_ws/"
       );
       const data = await response.json();
       prepareChartData(data);
@@ -150,12 +150,12 @@ const TopPtsScatterPlot2018 = () => {
   return (
     <div>
       <h1 className="text-3xl font-semibold antialiased text-center my-4">
-        Top 25 Scorers since 2017-2018 season visualized by Total Points/Win
-        Shares per season
+        Top 25 Scorers in the Playoffs since 2009-2010 season visualized by Total Points/Win
+        Shares per season {"(playoffs)"}
       </h1>
       <canvas ref={chartRef} />
     </div>
   )
 }
 
-export default TopPtsScatterPlot2018
+export default TopPtsScatterPlot2009

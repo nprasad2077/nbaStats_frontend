@@ -11,6 +11,7 @@ import TopRebounds from "./components/TopRebounds";
 import PointsPerGameHistogram from "./components/PointsPerGameHistogram";
 import TopPtsScatterPlot from "./components/TopPtsScatterPlot";
 import TopPtsScatterPlot2018 from "./components/TopPtsScatterPlot2018";
+import TopPtsScatterPlotPlayoffs2009 from "./components/TopPtsScatterPlotPlayoffs2009";
 
 function App() {
   return (
@@ -41,7 +42,10 @@ function App() {
             <Link to="/top_pts_scatter_plot" class='text-white'>Top PTS Scatter Plot</Link>
           </li>
           <li>
-            <Link to="/top_pts_scatter_plot_2018" class='text-white'>Top PTS Scatter Plot post 2018</Link>
+            <Link to="/top_pts_scatter_plot_2018" class='text-white'>Top PTS Scatter Plot since 2018</Link>
+          </li>
+          <li>
+            <Link to="/top_pts_scatter_plot_2009_playoffs" class='text-white'>Playoffs Top Scorers vs. Win Shares since 2009</Link>
           </li>
         </ul>
       </nav>
@@ -54,6 +58,7 @@ function App() {
         <Route path='/ppg_histogram' element={<PointsPerGameHistogram />} />
         <Route path='/top_pts_scatter_plot' element={<TopPtsScatterPlot />} />
         <Route path='/top_pts_scatter_plot_2018' element={<TopPtsScatterPlot2018 />} />
+        <Route path='/top_pts_scatter_plot_2009_playoffs' element={<TopPtsScatterPlotPlayoffs2009 />} />
       </Routes>
     </div>
   );
