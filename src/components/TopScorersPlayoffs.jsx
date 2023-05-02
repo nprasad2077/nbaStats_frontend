@@ -1,26 +1,26 @@
 import React from "react";
 import { useState, useEffect, Fragment } from "react";
-import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import TopScorersChartPlayoffs from './TopScorersChartPlayoffs'
+import { Listbox, Transition } from "@headlessui/react";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import TopScorersChartPlayoffs from "./TopScorersChartPlayoffs";
 
 const seasons = [
-  { season: '2021-2022' },
-  { season: '2020-2021' },
-  { season: '2019-2020' },
-  { season: '2018-2019' },
-  { season: '2017-2018' },
-  { season: '2016-2017' },
-  { season: '2015-2016' },
-  { season: '2014-2015' },
-  { season: '2013-2014' },
-  { season: '2012-2013' },
-  { season: '2011-2012' },
-  { season: '2010-2011' },
-  { season: '2009-2010' },
-]
+  { season: "2021-2022" },
+  { season: "2020-2021" },
+  { season: "2019-2020" },
+  { season: "2018-2019" },
+  { season: "2017-2018" },
+  { season: "2016-2017" },
+  { season: "2015-2016" },
+  { season: "2014-2015" },
+  { season: "2013-2014" },
+  { season: "2012-2013" },
+  { season: "2011-2012" },
+  { season: "2010-2011" },
+  { season: "2009-2010" },
+];
 
-const DropDownSeason = ({selectedSeason, setSelectedSeason}) => {
+const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   return (
     <div className="w-72 mt-8">
       <Listbox value={selectedSeason} onChange={setSelectedSeason}>
@@ -46,7 +46,7 @@ const DropDownSeason = ({selectedSeason, setSelectedSeason}) => {
                   key={seasonIdx}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? 'bg-indigo-100 text-indigo-900' : 'text-gray-900'
+                      active ? "bg-indigo-100 text-indigo-900" : "text-gray-900"
                     }`
                   }
                   value={season}
@@ -55,7 +55,7 @@ const DropDownSeason = ({selectedSeason, setSelectedSeason}) => {
                     <>
                       <span
                         className={`block truncate ${
-                          selected ? 'font-medium' : 'font-normal'
+                          selected ? "font-medium" : "font-normal"
                         }`}
                       >
                         {season.season}
@@ -74,41 +74,44 @@ const DropDownSeason = ({selectedSeason, setSelectedSeason}) => {
         </div>
       </Listbox>
     </div>
-  )
-}
-
+  );
+};
 
 const TopScorersPlayoffs = () => {
-  const [selectedSeason, setSelectedSeason] = useState(seasons[0])
+  const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const [topScorers, setTopScorers] = useState([]);
 
   useEffect(() => {
-    const tailEndSeason = selectedSeason.season.split('-')[1]
-    fetch(`http://127.0.0.1:8000/api/playerdata/topscorers/playoffs/${tailEndSeason}/`)
+    const tailEndSeason = selectedSeason.season.split("-")[1];
+    fetch(
+      `http://127.0.0.1:8000/api/playerdata/topscorers/playoffs/${tailEndSeason}/`
+    )
       .then((response) => response.json())
       .then((data) => setTopScorers(data.results));
   }, [selectedSeason]);
 
   return (
     <div class="text-center">
-      <div class='ml-10'>
-        <DropDownSeason selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason}/>
+      <div class="ml-10">
+        <DropDownSeason
+          selectedSeason={selectedSeason}
+          setSelectedSeason={setSelectedSeason}
+        />
       </div>
-      
+
       <h1 class="text-3xl font-semibold antialiased text-center mb-4">
         Top 20 Scorers for {selectedSeason.season}
       </h1>
+      <div class="mt-4">
+        <TopScorersChartPlayoffs topScorers={topScorers} />
+      </div>
       <ul>
         {topScorers.map((player) => (
-          <li key={player.id} class='font-sem'>
+          <li key={player.id} class="font-sem">
             {player.player_name} - {player.PTS} points
           </li>
         ))}
       </ul>
-      <div class='mt-4'>
-        <TopScorersChartPlayoffs topScorers={topScorers} />
-      </div>
-      
     </div>
   );
 };

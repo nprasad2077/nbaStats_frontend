@@ -5,7 +5,7 @@ import { LinearScale } from 'chart.js/auto';
 
 Chart.register(LinearScale);
 
-const TopScorersChart = ({ topScorers }) => {
+const TopScorersChartPlayoffs = ({ topScorers }) => {
   const playerNames = topScorers.map((player) => player.player_name);
   const playerPoints = topScorers.map((player) => player.PTS);
 
@@ -23,8 +23,9 @@ const TopScorersChart = ({ topScorers }) => {
   };
 
   const options = {
+    indexAxis: 'y', // This line makes the chart horizontal
     scales: {
-      y: {
+      x: {
         ticks: {
           beginAtZero: true,
         },
@@ -35,4 +36,4 @@ const TopScorersChart = ({ topScorers }) => {
   return <Bar data={data} options={options} />;
 };
 
-export default TopScorersChart;
+export default TopScorersChartPlayoffs;

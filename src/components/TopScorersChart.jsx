@@ -23,8 +23,9 @@ const TopScorersChart = ({ topScorers }) => {
   };
 
   const options = {
+    indexAxis: 'y', // This line makes the chart horizontal
     scales: {
-      y: {
+      x: {
         ticks: {
           beginAtZero: true,
         },
