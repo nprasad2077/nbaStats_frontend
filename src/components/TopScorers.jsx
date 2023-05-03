@@ -101,8 +101,8 @@ const TopScorers = () => {
       <div className="mt-4">
         <TopScorersChart topScorers={topScorers} />
       </div>
-      <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {topScorers.map((player) => (
+      <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:grid-rows-5 lg:grid-flow-col">
+        {topScorers.map((player, index) => (
           <li key={player.id} className="font-sem">
             {player.name} - {player.PTS} points
           </li>

@@ -1,7 +1,7 @@
 // TopReboundsDetailedChart.jsx
-import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart } from 'chart.js';
+import React from "react";
+import { Bar } from "react-chartjs-2";
+import { Chart } from "chart.js";
 import {
   CategoryScale,
   LinearScale,
@@ -9,47 +9,28 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
+} from "chart.js";
 
-Chart.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+
 
 const options = {
-  indexAxis: 'y',
-  elements: {
-    bar: {
-      borderWidth: 2,
-      barPercentage: 0.6, // Adjust this value to control the bar width
-      categoryPercentage: 0.8, // Adjust this value to control the space between bars
-    },
-  },
-  responsive: true,
+  indexAxis: 'y', // Set the orientation to horizontal
   scales: {
-    y: {
+    x: {
+      stacked: false,
       ticks: {
-        padding: 10,
+        beginAtZero: true,
       },
     },
-  },
-  plugins: {
-    legend: {
-      position: 'top',
+    y: {
+      stacked: true,
+      barPercentage: 0.4, // Adjust the width of each bar
+      categoryPercentage: 0.5, // Adjust the space between each group of bars
     },
-    title: {
-      display: true,
-      text: 'Top 20 Rebounders by rebounds per game (with ORB & DRB)',
-    },
-  },
-  bar: {
-    groupSpacing: 10,
   },
 };
+
 
 const TopReboundsDetailedChart = ({ topTRB }) => {
   const playerNames = topTRB.map((player) => player.name);
@@ -61,28 +42,35 @@ const TopReboundsDetailedChart = ({ topTRB }) => {
     labels: playerNames,
     datasets: [
       {
-        label: 'Total Rebounds',
+        label: "Total Rebounds",
         data: playerTRB,
-        borderColor: 'rgb(75, 192, 192)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: "rgb(75, 192, 192)",
+        backgroundColor: "rgba(40, 192, 192, 0.2)",
         barThickness: 10,
+        barPercentage: 0.8,
+        categoryPercentage: 0.8,
       },
       {
-        label: 'Offensive Rebounds',
+        label: "Offensive Rebounds",
         data: playerORB,
-        borderColor: 'rgb(255, 206, 86)',
-        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+        borderColor: "rgb(255, 206, 0)",
+        backgroundColor: "rgba(255, 206, 25, 1.0)",
         barThickness: 10,
+        barPercentage: 0.8,
+        categoryPercentage: 0.8,
       },
       {
-        label: 'Defensive Rebounds',
+        label: "Defensive Rebounds",
         data: playerDRB,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: "rgb(255, 0, 0)",
+        backgroundColor: "rgba(255, 0, 0, 0.6)",
         barThickness: 10,
+        barPercentage: 0.8,
+        categoryPercentage: 0.8,
       },
     ],
   };
+  
 
   return <Bar options={options} data={data} />;
 };

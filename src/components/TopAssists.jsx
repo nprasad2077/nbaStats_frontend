@@ -85,6 +85,9 @@ const TopAssists = () => {
       .then((data) => setTopAssists(data.results));
   }, [selectedSeason]);
 
+
+  
+
   return (
     <div className="text-center text-slate-600">
       <div className="flex flex-col items-start">
@@ -100,7 +103,7 @@ const TopAssists = () => {
       <div className="mt-4">
         <TopAssistsChart topAssists={topAssists} />
       </div>
-      <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:grid-rows-5 lg:grid-flow-col">
         {topAssists.map((player) => (
           <li key={player.id} className="font-sem">
             {player.name} - {player.AST} Assists
