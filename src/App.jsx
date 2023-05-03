@@ -20,7 +20,7 @@ function App() {
   return (
     <div class="bg-gray-100 min-h-screen">
       <div className="navbar bg-base-300" data-theme="winter">
-        <div className="container mx-auto px-2 py-2 flex flex-wrap items-center justify-between">
+        <div className="container py-2 flex flex-wrap items-center justify-between">
           <Link to="/" className="btn btn-ghost normal-case text-2xl">
             NBA Data
           </Link>
@@ -78,7 +78,7 @@ function App() {
             {/* Second row of navbar items */}
             <div className="flex flex-wrap justify-center w-full lg:w-auto mt-2 lg:mt-0">
               {/* Add second row navbar items here */}
-             
+
               <Link
                 to="/topscorers_playoffs"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
@@ -101,22 +101,27 @@ function App() {
           </div>
         </div>
       </div>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/topscorers" element={<TopScorers />} />
-        <Route path="/topscorers_playoffs" element={<TopScorersPlayoffs />} />
-        <Route path="/three_two_point_trends" element={<PointTrend />} />
-        <Route path="/top_assists" element={<TopAssists />} />
-        <Route path="/top_assists_playoffs" element={<TopAssistsPlayoffs />} />
-        <Route path="/top_rebounds" element={<TopRebounds />} />
-        <Route path="/ppg_histogram" element={<PointsPerGameHistogram />} />
-        <Route path="/top_pts_scatter_plot" element={<TopPtsScatterPlot />} />
+      <div className="container mx-auto">
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/topscorers" element={<TopScorers />} />
+          <Route path="/topscorers_playoffs" element={<TopScorersPlayoffs />} />
+          <Route path="/three_two_point_trends" element={<PointTrend />} />
+          <Route path="/top_assists" element={<TopAssists />} />
+          <Route
+            path="/top_assists_playoffs"
+            element={<TopAssistsPlayoffs />}
+          />
+          <Route path="/top_rebounds" element={<TopRebounds />} />
+          <Route path="/ppg_histogram" element={<PointsPerGameHistogram />} />
+          <Route path="/top_pts_scatter_plot" element={<TopPtsScatterPlot />} />
 
-        <Route
-          path="/top_pts_scatter_plot_2009_playoffs"
-          element={<TopPtsScatterPlotPlayoffs2009 />}
-        />
-      </Routes>
+          <Route
+            path="/top_pts_scatter_plot_2009_playoffs"
+            element={<TopPtsScatterPlotPlayoffs2009 />}
+          />
+        </Routes>
+      </div>
     </div>
   );
 }
