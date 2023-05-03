@@ -86,18 +86,7 @@ const TopAssists = () => {
   }, [selectedSeason]);
 
 
-  const orderedScorers = [];
-  const itemsPerColumn = 5;
-  const totalColumns = 4;
-
-  for (let row = 0; row < itemsPerColumn; row++) {
-    for (let col = 0; col < totalColumns; col++) {
-      const index = col * itemsPerColumn + row;
-      if (index < topAssists.length) {
-        orderedScorers.push(topAssists[index]);
-      }
-    }
-  }
+  
 
   return (
     <div className="text-center text-slate-600">
@@ -114,10 +103,10 @@ const TopAssists = () => {
       <div className="mt-4">
         <TopAssistsChart topAssists={topAssists} />
       </div>
-      <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {orderedScorers.map((player) => (
+      <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:grid-rows-5 lg:grid-flow-col">
+        {topAssists.map((player) => (
           <li key={player.id} className="font-sem">
-            {player.name} - {player.AST} assists
+            {player.name} - {player.AST} Assists
           </li>
         ))}
       </ul>

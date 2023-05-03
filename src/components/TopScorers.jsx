@@ -86,21 +86,6 @@ const TopScorers = () => {
       .then((data) => setTopScorers(data.results));
   }, [selectedSeason]);
 
-  const orderedScorers = [];
-  const itemsPerColumn = 5;
-  const totalColumns = 4;
-
-  for (let row = 0; row < itemsPerColumn; row++) {
-    for (let col = 0; col < totalColumns; col++) {
-      const index = col * itemsPerColumn + row;
-      if (index < topScorers.length) {
-        orderedScorers.push(topScorers[index]);
-      }
-    }
-  }
-
-  console.log(topScorers);
-
   return (
     <div className="text-center text-slate-600">
       <div className="flex flex-col items-start">
