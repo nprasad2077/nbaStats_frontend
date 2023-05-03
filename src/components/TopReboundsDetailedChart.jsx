@@ -13,44 +13,24 @@ import {
 
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+
 const options = {
-  indexAxis: "y",
-  elements: {
-    bar: {
-      borderWidth: 1.2,
-    },
-  },
-  responsive: true,
+  indexAxis: 'y', // Set the orientation to horizontal
   scales: {
-    y: {
-      ticks: {
-        padding: 0,
-      },
-      grouped: true, // Enable grouping of bars
-    },
     x: {
-      barThickness: 0, // Adjust this value to control the thickness of the bars
-      minBarLength: 5, // Adjust this value to set the minimum bar length (in pixels)
+      stacked: false,
+      ticks: {
+        beginAtZero: true,
+      },
     },
-  },
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Top 20 Rebounders by rebounds per game (with ORB & DRB)",
-    },
-  },
-  layout: {
-    padding: {
-      top: 20,
-      bottom: 0,
-      left: 0,
-      right: 0,
+    y: {
+      stacked: true,
+      barPercentage: 0.4, // Adjust the width of each bar
+      categoryPercentage: 0.5, // Adjust the space between each group of bars
     },
   },
 };
+
 
 const TopReboundsDetailedChart = ({ topTRB }) => {
   const playerNames = topTRB.map((player) => player.name);
@@ -65,31 +45,32 @@ const TopReboundsDetailedChart = ({ topTRB }) => {
         label: "Total Rebounds",
         data: playerTRB,
         borderColor: "rgb(75, 192, 192)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        backgroundColor: "rgba(40, 192, 192, 0.2)",
         barThickness: 10,
-        barPercentage: 0.8, // Controls the width of the bars in each group (relative to category width)
-        categoryPercentage: 6, // Controls the width of the bar groups (relative to category width)
+        barPercentage: 0.8,
+        categoryPercentage: 0.8,
       },
       {
         label: "Offensive Rebounds",
         data: playerORB,
-        borderColor: "rgb(255, 206, 86)",
-        backgroundColor: "rgba(255, 206, 86, 0.2)",
+        borderColor: "rgb(255, 206, 0)",
+        backgroundColor: "rgba(255, 206, 25, 1.0)",
         barThickness: 10,
-        barPercentage: 0.4, // Controls the width of the bars in each group (relative to category width)
-        categoryPercentage: 1, // Controls the width of the bar groups (relative to category width)
+        barPercentage: 0.8,
+        categoryPercentage: 0.8,
       },
       {
         label: "Defensive Rebounds",
         data: playerDRB,
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderColor: "rgb(255, 0, 0)",
+        backgroundColor: "rgba(255, 0, 0, 0.6)",
         barThickness: 10,
-        barPercentage: 0.4, // Controls the width of the bars in each group (relative to category width)
-        categoryPercentage: 1, // Controls the width of the bar groups (relative to category width)
+        barPercentage: 0.8,
+        categoryPercentage: 0.8,
       },
     ],
   };
+  
 
   return <Bar options={options} data={data} />;
 };
