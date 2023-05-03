@@ -3,8 +3,8 @@ React Frontend application for my NBA stats API.
 
 # Deployed Backend API
 
-[Github Repo](https://github.com/nprasad2077/nbaStats)
-[Link to all players deployed backend](https://nba-stats-db.herokuapp.com/api/playerdata/?format=json)
+- [Github Repo](https://github.com/nprasad2077/nbaStats)
+- [Link to all players deployed backend](https://nba-stats-db.herokuapp.com/api/playerdata/?format=json)
 
 # Plan
 
