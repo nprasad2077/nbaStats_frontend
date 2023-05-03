@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 
@@ -16,6 +16,16 @@ import TopAssistsPlayoffs from "./components/TopAssistsPlayoffs.jsx";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (menuOpen) {
+      const timer = setTimeout(() => {
+        setMenuOpen(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [menuOpen]);
+
 
   return (
     <div class="bg-gray-100 min-h-screen">
