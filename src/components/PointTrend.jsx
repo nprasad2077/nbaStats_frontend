@@ -5,7 +5,7 @@ const PointTrend = () => {
   const [points, setPoints] = useState([]);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/three_two_point_trends/`)
+    fetch(`https://nba-stats-db.herokuapp.com/api/three_two_point_trends/`)
       .then((response) => response.json())
       .then((data) => setPoints(data));
   }, []);
@@ -89,9 +89,9 @@ const PointTrend = () => {
   }, [points]);
 
   return (
-    <div>
-      <h1 className="text-3xl font-semibold antialiased text-center mb-4">
-        Point Trends
+    <div className="text-slate-600">
+      <h1 className="text-3xl font-semibold antialiased text-center my-4">
+        Shooting Trends over NBA Seasons
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>

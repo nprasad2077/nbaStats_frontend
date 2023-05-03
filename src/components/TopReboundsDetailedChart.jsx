@@ -39,11 +39,11 @@ const options = {
   },
   plugins: {
     legend: {
-      position: 'right',
+      position: 'top',
     },
     title: {
       display: true,
-      text: 'Top 20 Total Rebounds per Season (with ORB & DRB)',
+      text: 'Top 20 Rebounders by rebounds per game (with ORB & DRB)',
     },
   },
   bar: {

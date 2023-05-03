@@ -81,21 +81,21 @@ const TopRebounds = () => {
 
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
-    fetch(`http://127.0.0.1:8000/api/top_rebounds/${tailEndSeason}/`)
+    fetch(`https://nba-stats-db.herokuapp.com/api/top_rebounds/${tailEndSeason}/`)
       .then((response) => response.json())
       .then((data) => setTopTRB(data.results));
-    fetch(`http://127.0.0.1:8000/api/top_rebounds_offensive/${tailEndSeason}/`)
+    fetch(`https://nba-stats-db.herokuapp.com/api/top_rebounds_offensive/${tailEndSeason}/`)
       .then((response) => response.json())
       .then((data) => setTopORB(data.results));
 
-    fetch(`http://127.0.0.1:8000/api/top_rebounds_defensive/${tailEndSeason}/`)
+    fetch(`https://nba-stats-db.herokuapp.com/api/top_rebounds_defensive/${tailEndSeason}/`)
       .then((response) => response.json())
       .then((data) => setTopDRB(data.results));
   }, [selectedSeason]);
 
   return (
-    <div className="text-center">
-      <div className="ml-10">
+    <div className="text-center text-slate-600">
+      <div className="ml-10 text-black">
         <DropDownSeason
           selectedSeason={selectedSeason}
           setSelectedSeason={setSelectedSeason}
@@ -103,7 +103,7 @@ const TopRebounds = () => {
       </div>
 
       <h1 className="text-3xl font-semibold antialiased text-center mb-4">
-        Top Rebounders for {selectedSeason.season}
+        Top Rebounders per Game for {selectedSeason.season} Season
       </h1>
       <ul>
         <li className="font-sem">

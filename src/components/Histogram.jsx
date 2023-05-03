@@ -17,7 +17,7 @@ const Histogram = ({ data }) => {
     labels: formattedData.map((entry) => entry.range),
     datasets: [
       {
-        label: "Count",
+        label: "Player PPG",
         data: formattedData.map((entry) => entry.count),
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         borderColor: "rgba(75, 192, 192, 1)",

@@ -78,14 +78,14 @@ const TopAssists = () => {
 
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
-    fetch(`http://127.0.0.1:8000/api/top_assists/${tailEndSeason}/`)
+    fetch(`https://nba-stats-db.herokuapp.com/api/top_assists/${tailEndSeason}/`)
       .then((response) => response.json())
       .then((data) => setTopAssists(data.results));
   }, [selectedSeason]);
 
   return (
-    <div class="text-center">
-      <div class="ml-10">
+    <div class="text-center text-slate-600">
+      <div class="ml-10 text-black">
         <DropDownSeason
           selectedSeason={selectedSeason}
           setSelectedSeason={setSelectedSeason}
@@ -93,18 +93,18 @@ const TopAssists = () => {
       </div>
 
       <h1 class="text-3xl font-semibold antialiased text-center mb-4">
-        Top 20 Assists for {selectedSeason.season}
+        Top 20 by Assists Per Game for {selectedSeason.season} Season
       </h1>
-      <ul>
+      <div class="mt-4">
+        <TopAssistsChart topAssists={topAssists} />
+      </div>
+      <ul class='mt-6'>
         {topAssists.map((player) => (
           <li key={player.id} class="font-sem">
             {player.name} - {player.AST} Assists
           </li>
         ))}
       </ul>
-      <div class="mt-4">
-        <TopAssistsChart topAssists={topAssists} />
-      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 // TopReboundsChart.jsx
-import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart } from 'chart.js';
+import React from "react";
+import { Bar } from "react-chartjs-2";
+import { Chart } from "chart.js";
 import {
   CategoryScale,
   LinearScale,
@@ -9,19 +9,18 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
+} from "chart.js";
 
-Chart.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const options = {
-  indexAxis: 'y',
+  indexAxis: "y",
+  scales: {
+    y: {
+      offset: true,
+      barPercentage: 10.25, // Adjust this value to change the bar thickness
+    },
+  },
   elements: {
     bar: {
       borderWidth: 2,
@@ -30,11 +29,26 @@ const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'right',
+      position: "bottom",
     },
     title: {
       display: true,
-      text: 'Top Rebounds by Category per Season',
+      text: "Top Rebounds per Game by Season",
+    },
+    tooltip: {
+      callbacks: {
+        label: (context) => {
+          const dataIndex = context.dataIndex;
+          const value = context.parsed.x;
+          const descriptions = [
+            "Total Rebounds",
+            "Offensive Rebounds",
+            "Defensive Rebounds",
+          ];
+
+          return `${descriptions[dataIndex]}: ${value}`;
+        },
+      },
     },
   },
 };
@@ -45,18 +59,13 @@ const TopReboundsChart = ({ topTRB, topORB, topDRB }) => {
     topORB[0]?.name || 'N/A',
     topDRB[0]?.name || 'N/A',
   ];
-  const playerRebounds = [
-    topTRB[0]?.TRB || 0,
-    topORB[0]?.ORB || 0,
-    topDRB[0]?.DRB || 0,
-  ];
-
+  
   const data = {
     labels: playerNames,
     datasets: [
       {
         label: 'Rebounds',
-        data: playerRebounds,
+        data: [topTRB[0]?.TRB || 0, topORB[0]?.ORB || 0, topDRB[0]?.DRB || 0],
         borderColor: [
           'rgb(75, 192, 192)',
           'rgb(255, 206, 86)',
@@ -73,5 +82,6 @@ const TopReboundsChart = ({ topTRB, topORB, topDRB }) => {
 
   return <Bar options={options} data={data} />;
 };
+
 
 export default TopReboundsChart;
