@@ -18,7 +18,7 @@ const seasons = [
 
 const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   return (
-    <div className="w-72 mt-8 text-black">
+    <div className="w-72 text-black">
       <Listbox value={selectedSeason} onChange={setSelectedSeason}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-300 sm:text-sm">
@@ -87,23 +87,23 @@ const TopScorers = () => {
   }, [selectedSeason]);
 
   return (
-    <div class="text-center text-slate-600">
-      <div class="ml-10">
+    <div className="text-center text-slate-600">
+      <div className="flex flex-col items-start mt-4">
         <DropDownSeason
           selectedSeason={selectedSeason}
           setSelectedSeason={setSelectedSeason}
         />
       </div>
 
-      <h1 class="text-3xl font-semibold antialiased text-center mb-4">
+      <h1 className="text-3xl font-semibold antialiased text-center mb-4">
         Top 20 Scorers per Game for {selectedSeason.season} Season
       </h1>
-      <div class="mt-4">
+      <div className="mt-4">
         <TopScorersChart topScorers={topScorers} />
       </div>
-      <ul class='mt-6'>
+      <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {topScorers.map((player) => (
-          <li key={player.id} class="font-sem">
+          <li key={player.id} className="font-sem">
             {player.name} - {player.PTS} points
           </li>
         ))}
