@@ -57,6 +57,8 @@ const TopPtsScatterPlot2009 = () => {
             datasets,
           },
           options: {
+            responsive: true,
+            maintainAspectRatio: true,
             scales: {
               x: {
                 title: {
@@ -209,22 +211,27 @@ const TopPtsScatterPlot2009 = () => {
   };
 
   return (
-    <div className="text-slate-600">
+    <div className="text-slate-600 container mx-auto">
       <h1 className="text-3xl font-semibold antialiased text-center my-4">
         Top 25 Scorers in the Playoffs since 2009-2010 season visualized by
         Total Points/Win Shares per season {"(playoffs)"}
       </h1>
-      <canvas ref={chartRef} />
-      <div class='flex flex-col text-black'>
-        <h3 class='font-sans subpixel-antialiased p-8'>
+      <div style={{ position: "relative", height: "60vh", width: "100%" }}>
+        <canvas ref={chartRef} />
+      </div>
+
+      <div class="flex flex-col text-black">
+        <h3 class="font-sans subpixel-antialiased p-8">
           Data is derived by first creating a list of the top 25 scoring players
-          by total points in the playoffs since the 2009-2010 season.
-          Then, the players are mapped on the chart by Total Points on the
-          X-axis and Win Shares on the Y-Axis. This shows any correlation between a
-          player's individual points scored, and win shares*{" "}
-          {"(used to determine how many wins a player has contributed to his/her team)."}{" "}
+          by total points in the playoffs since the 2009-2010 season. Then, the
+          players are mapped on the chart by Total Points on the X-axis and Win
+          Shares on the Y-Axis. This shows any correlation between a player's
+          individual points scored, and win shares*{" "}
+          {
+            "(used to determine how many wins a player has contributed to his/her team)."
+          }{" "}
         </h3>
-        <p class='text-xs italic px-8 py-10'>
+        <p class="text-xs italic px-8 py-10">
           *Win Shares is a basketball statistic that was created by basketball
           analyst and statistician Bill James. The statistic is designed to
           measure a player's overall contribution to his team's success, by

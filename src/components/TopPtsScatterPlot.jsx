@@ -57,6 +57,8 @@ const TopPtsScatterPlot = () => {
             datasets,
           },
           options: {
+            responsive: true,
+            maintainAspectRatio: true,
             scales: {
               x: {
                 title: {
@@ -135,7 +137,7 @@ const TopPtsScatterPlot = () => {
       "Kyrie Irving": "rgba(0, 122, 51, 0.7)",
       "Nikola Vučević": "rgba(0, 125, 197, 0.3)",
       "Tobias Harris": "rgba(200, 16, 46, 0.7)",
-      "CJ McCollum": "rgba(245, 43, 39, 0.3)"
+      "CJ McCollum": "rgba(245, 43, 39, 0.3)",
     };
 
     if (specifiedColors[playerName]) {
@@ -184,22 +186,27 @@ const TopPtsScatterPlot = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto">
       <h1 className="text-3xl font-semibold antialiased text-center my-4 text-slate-600">
         Top 25 Scorers since 2013-2014 season visualized by Total Points/Win
         Shares per season
       </h1>
-      <canvas ref={chartRef} />
-      <div class='flex flex-col text-black'>
-        <h3 class='font-sans subpixel-antialiased p-8'>
+      <div style={{ position: "relative", height: "60vh", width: "100%" }}>
+        <canvas ref={chartRef} />
+      </div>
+
+      <div class="flex flex-col text-black">
+        <h3 class="font-sans subpixel-antialiased p-8">
           Data is derived by first creating a list of the top 25 scoring players
           by total points in the regular season since the 2013-2014 season.
           Then, the players are mapped on the chart by Total Points on this
           X-axis and Win Shares on Y-Axis. This shows any correlation between a
           player's individual points scored, and win shares*{" "}
-          {"(used to determine how many wins a player has contributed to his/her team)."}{" "}
+          {
+            "(used to determine how many wins a player has contributed to his/her team)."
+          }{" "}
         </h3>
-        <p class='text-xs italic px-8 py-10'>
+        <p class="text-xs italic px-8 py-10">
           *Win Shares is a basketball statistic that was created by basketball
           analyst and statistician Bill James. The statistic is designed to
           measure a player's overall contribution to his team's success, by
