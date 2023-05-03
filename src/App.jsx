@@ -4,7 +4,7 @@ import "./App.css";
 
 // Components
 import Home from "./components/Home.jsx";
-import TopScorers from "./components/topScorers.jsx";
+import TopScorers from "./components/TopScorers.jsx";
 import PointTrend from "./components/PointTrend.jsx";
 import TopAssists from "./components/TopAssists.jsx";
 import TopRebounds from "./components/TopRebounds.jsx";
