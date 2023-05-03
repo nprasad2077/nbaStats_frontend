@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 
 // Components
-import Home from "./components/Home";
-import TopScorers from "./components/topScorers";
-import PointTrend from "./components/PointTrend";
-import TopAssists from "./components/TopAssists";
-import TopRebounds from "./components/TopRebounds";
-import PointsPerGameHistogram from "./components/PointsPerGameHistogram";
+import Home from "./components/Home.jsx";
+import TopScorers from "./components/TopScorers.jsx";
+import PointTrend from "./components/PointTrend.jsx";
+import TopAssists from "./components/TopAssists.jsx";
+import TopRebounds from "./components/TopRebounds.jsx";
+import PointsPerGameHistogram from "./components/PointsPerGameHistogram.jsx";
 import TopPtsScatterPlot from "./components/TopPtsScatterPlot";
-import TopPtsScatterPlotPlayoffs2009 from "./components/TopPtsScatterPlotPlayoffs2009";
-import TopScorersPlayoffs from "./components/TopScorersPlayoffs";
-import TopAssistsPlayoffs from "./components/TopAssistsPlayoffs";
+import TopPtsScatterPlotPlayoffs2009 from "./components/TopPtsScatterPlotPlayoffs2009.jsx";
+import TopScorersPlayoffs from "./components/TopScorersPlayoffs.jsx";
+import TopAssistsPlayoffs from "./components/TopAssistsPlayoffs.jsx";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
