@@ -218,10 +218,13 @@ const TopPtsScatterPlot2009 = () => {
       </h1>
       <div style={{ position: "relative", height: "60vh", width: "100%" }}>
         <canvas ref={chartRef} />
+        <p class="font-sans subpixel-antialiased p-8 text-center text-slate-600 text-sm">
+          {"(remove players by clicking names in the legend)"}
+        </p>
       </div>
 
-      <div class="flex flex-col text-black">
-        <h3 class="font-sans subpixel-antialiased p-8">
+      <div class="flex flex-col text-black mt-4 p-8">
+        <h3 class="font-sans subpixel-antialiased">
           Data is derived by first creating a list of the top 25 scoring players
           by total points in the playoffs since the 2009-2010 season. Then, the
           players are mapped on the chart by Total Points on the X-axis and Win
@@ -231,7 +234,7 @@ const TopPtsScatterPlot2009 = () => {
             "(used to determine how many wins a player has contributed to his/her team)."
           }{" "}
         </h3>
-        <p class="text-xs italic px-8 py-10">
+        <p class="text-xs italic mt-10">
           *Win Shares is a basketball statistic that was created by basketball
           analyst and statistician Bill James. The statistic is designed to
           measure a player's overall contribution to his team's success, by
