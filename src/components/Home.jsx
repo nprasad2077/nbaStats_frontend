@@ -20,7 +20,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="text-3xl font-semibold antialiased mt-4 text-center">
+    <div className="text-3xl font-semibold antialiased mt-4 text-center text-slate-600">
       <h1>Home</h1>
       <div>
         {dbInfo && (

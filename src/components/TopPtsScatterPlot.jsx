@@ -185,12 +185,12 @@ const TopPtsScatterPlot = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold antialiased text-center my-4">
+      <h1 className="text-3xl font-semibold antialiased text-center my-4 text-slate-600">
         Top 25 Scorers since 2013-2014 season visualized by Total Points/Win
         Shares per season
       </h1>
       <canvas ref={chartRef} />
-      <div class='flex flex-col'>
+      <div class='flex flex-col text-black'>
         <h3 class='font-sans subpixel-antialiased p-8'>
           Data is derived by first creating a list of the top 25 scoring players
           by total points in the regular season since the 2013-2014 season.

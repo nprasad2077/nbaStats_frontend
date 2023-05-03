@@ -84,8 +84,8 @@ const TopAssists = () => {
   }, [selectedSeason]);
 
   return (
-    <div class="text-center">
-      <div class="ml-10">
+    <div class="text-center text-slate-600">
+      <div class="ml-10 text-black">
         <DropDownSeason
           selectedSeason={selectedSeason}
           setSelectedSeason={setSelectedSeason}

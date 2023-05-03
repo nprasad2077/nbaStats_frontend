@@ -89,7 +89,7 @@ const PointTrend = () => {
   }, [points]);
 
   return (
-    <div>
+    <div className="text-slate-600">
       <h1 className="text-3xl font-semibold antialiased text-center my-4">
         Shooting Trends over NBA Seasons
       </h1>

@@ -98,8 +98,8 @@ const PointsPerGameHistogram = () => {
   }, [selectedSeason]);
 
   return (
-    <div className="text-center">
-      <div className="ml-10">
+    <div className="text-center text-slate-600">
+      <div className="ml-10 text-black">
         <DropDownSeason
           selectedSeason={selectedSeason}
           setSelectedSeason={setSelectedSeason}

@@ -22,7 +22,7 @@ const seasons = [
 
 const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   return (
-    <div className="w-72 mt-8">
+    <div className="w-72 mt-8 text-black">
       <Listbox value={selectedSeason} onChange={setSelectedSeason}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-300 sm:text-sm">
@@ -91,7 +91,7 @@ const TopScorersPlayoffs = () => {
   }, [selectedSeason]);
 
   return (
-    <div class="text-center">
+    <div class="text-center text-slate-600">
       <div class="ml-10">
         <DropDownSeason
           selectedSeason={selectedSeason}
