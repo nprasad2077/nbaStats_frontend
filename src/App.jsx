@@ -17,69 +17,53 @@ import TopAssistsPlayoffs from "./components/TopAssistsPlayoffs";
 function App() {
   return (
     <div class="bg-gray-100 min-h-screen">
-      <h1 class="text-3xl font-bold underline p-4 bg-blue-600 text-white">
-        NBA Data
-      </h1>
-
-      <nav class="p-4 bg-blue-500">
-        <ul class="flex space-x-4">
-          <li>
-            <Link to="/" class="text-white">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/topscorers" class="text-white">
-              Top Scorers
-            </Link>
-          </li>
-          <li>
-            <Link to="/three_two_point_trends" class="text-white">
-              Shooting Trends
-            </Link>
-          </li>
-          <li>
-            <Link to="/top_assists" class="text-white">
-              Top Assists
-            </Link>
-          </li>
-          <li>
-            <Link to="/top_rebounds" class="text-white">
-              Top Rebounders
-            </Link>
-          </li>
-          <li>
-            <Link to="/ppg_histogram" class="text-white">
-              Points Per Game Histogram
-            </Link>
-          </li>
-          <li>
-            <Link to="/top_pts_scatter_plot" class="text-white">
-              Top Scorers vs. Win Shares {"(season)"}
-            </Link>
-          </li>
-          {/* <li>
-            <Link to="/top_pts_scatter_plot_2018" class="text-white">
-              Top PTS Scatter Plot
-            </Link>
-          </li> */}
-          <li>
-            <Link to="/topscorers_playoffs" class="text-white">
-              Top Scorers in the Playoffs
-            </Link>
-          </li>
-          <li>
-            <Link to="/top_assists_playoffs" class="text-white">
-              Top Assists Playoffs
-            </Link>
-          </li>
-          <li>
-            <Link to="/top_pts_scatter_plot_2009_playoffs" class="text-white">
-              Top Scorers vs. Win Shares {'(playoffs)'}
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="navbar bg-base-300" data-theme="winter">
+        <Link to="/" className="btn btn-ghost normal-case text-lg">
+          NBA Data
+        </Link>
+        <Link to="/topscorers" className="btn btn-ghost normal-case text-lg">
+          Top Scorers
+        </Link>
+        <Link
+          to="/three_two_point_trends"
+          className="btn btn-ghost normal-case text-lg"
+        >
+          Shooting Trends
+        </Link>
+        <Link to="/top_assists" className="btn btn-ghost normal-case text-lg">
+          Top Assists
+        </Link>
+        <Link to="/top_rebounds" className="btn btn-ghost normal-case text-lg">
+          Top Rebounders
+        </Link>
+        <Link to="/ppg_histogram" className="btn btn-ghost normal-case text-lg">
+          Points Per Game Histogram
+        </Link>
+        <Link
+          to="/top_pts_scatter_plot"
+          className="btn btn-ghost normal-case text-lg"
+        >
+          Top Scorers vs. Win Shares
+        </Link>
+        <Link
+          to="/topscorers_playoffs"
+          className="btn btn-ghost normal-case text-lg"
+        >
+          Top Scorers {"(playoffs)"}
+        </Link>
+        <Link
+          to="/top_assists_playoffs"
+          className="btn btn-ghost normal-case text-lg"
+        >
+          Top Assists {"(playoffs)"}
+        </Link>
+        <Link
+          to="/top_pts_scatter_plot_2009_playoffs"
+          className="btn btn-ghost normal-case text-lg"
+        >
+          Top Scorers vs. Win Shares {"(playoffs)"}
+        </Link>
+      </div>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/topscorers" element={<TopScorers />} />
