@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import TopReboundsChart from "./TopReboundsChart";
-import TopReboundsDetailedChart from "./TopReboundsDetailedChart";
+import TopReboundsChartTotals from "./TopReboundsChartTotals";
+import TopReboundsDetailedChartTotals from "./TopReboundsDetailedChartTotals";
 
 const seasons = [
   { season: "2022-2023" },
@@ -18,7 +18,7 @@ const seasons = [
 ];
 const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   return (
-    <div className="w-72 mt-4 text-black">
+    <div className="w-72 my-4 text-black">
       <Listbox value={selectedSeason} onChange={setSelectedSeason}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-300 sm:text-sm">
@@ -103,27 +103,27 @@ const TopReboundsTotals = () => {
       </div>
 
       <h1 className="text-3xl font-semibold antialiased text-center mb-4">
-        Top Rebounders per Game for {selectedSeason.season} Season
+        Top Rebounders by Total Rebounds for {selectedSeason.season} Season
       </h1>
       <ul>
         <li className="font-sem">
-          Top Total Rebounds - {topTRB[0]?.name || "N/A"} -{" "}
+          Top Total Rebounds - {topTRB[0]?.player_name || "N/A"} -{" "}
           {topTRB[0]?.TRB || 0}
         </li>
         <li className="font-sem">
-          Top Offensive Rebounds - {topORB[0]?.name || "N/A"} -{" "}
+          Top Total Offensive Rebounds - {topORB[0]?.player_name || "N/A"} -{" "}
           {topORB[0]?.ORB || 0}
         </li>
         <li className="font-sem">
-          Top Defensive Rebounds - {topDRB[0]?.name || "N/A"} -{" "}
+          Top Total Defensive Rebounds - {topDRB[0]?.player_name || "N/A"} -{" "}
           {topDRB[0]?.DRB || 0}
         </li>
       </ul>
       <div className="mt-4 w-auto">
-        <TopReboundsChart topTRB={topTRB} topORB={topORB} topDRB={topDRB} />
+        <TopReboundsChartTotals topTRB={topTRB} topORB={topORB} topDRB={topDRB} />
       </div>
       <div className="mt-4 w-auto">
-        <TopReboundsDetailedChart topTRB={topTRB} />
+        <TopReboundsDetailedChartTotals topTRB={topTRB} />
       </div>
     </div>
   );

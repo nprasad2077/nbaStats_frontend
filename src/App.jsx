@@ -57,19 +57,19 @@ function App() {
                 Top Scorers
               </Link>
               <Link
+                to="/top_assists_totals"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+              >
+                Top Assists
+              </Link>
+              <Link
                 to="/three_two_point_trends"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
                 Shooting Trends
               </Link>
               <Link
-                to="/top_assists"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
-              >
-                Top Assists
-              </Link>
-              <Link
-                to="/top_rebounds"
+                to="/top_rebounds_totals"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
                 Top Rebounders

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart } from 'chart.js';
+import React from "react";
+import { Bar } from "react-chartjs-2";
+import { Chart } from "chart.js";
 import {
   CategoryScale,
   LinearScale,
@@ -8,19 +8,12 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
+} from "chart.js";
 
-Chart.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const options = {
-  indexAxis: 'y',
+  indexAxis: "y",
   elements: {
     bar: {
       borderWidth: 2,
@@ -29,11 +22,11 @@ const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'right',
+      position: "right",
     },
     title: {
       display: true,
-      text: 'Top 20 Assists per Season',
+      text: "Top 20 Assists per Season",
     },
   },
 };
@@ -46,10 +39,10 @@ const TopAssistsChart = ({ topAssists }) => {
     labels: playerNames,
     datasets: [
       {
-        label: 'Assists',
+        label: "Assists",
         data: playerAssists,
-        borderColor: 'rgb(75, 192, 192)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: "rgb(75, 192, 192)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
       },
     ],
   };

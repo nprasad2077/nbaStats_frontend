@@ -98,7 +98,7 @@ const TopAssistsPlayoffs = () => {
       </div>
 
       <h1 class="text-3xl font-semibold antialiased text-center mb-4">
-        Top 20 by Total Assists for {selectedSeason.season} Playoffs
+        Top 20 Players by Total Assists for {selectedSeason.season} Playoffs
       </h1>
 
       <div class="mt-4">

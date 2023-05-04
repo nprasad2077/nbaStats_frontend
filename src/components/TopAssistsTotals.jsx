@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import TopAssistsChart from "./TopAssistsChart";
+import TopAssistsChartTotals from "./TopAssistsChartTotals";
 
 const seasons = [
   { season: "2022-2023" },
@@ -85,9 +85,6 @@ const TopAssistsTotals = () => {
       .then((data) => setTopAssists(data.results));
   }, [selectedSeason]);
 
-
-  
-
   return (
     <div className="text-center text-slate-600">
       <div className="flex flex-col items-start">
@@ -98,15 +95,15 @@ const TopAssistsTotals = () => {
       </div>
 
       <h1 className="text-3xl font-semibold antialiased text-center mb-4">
-        Top 20 by Assists Per Game for {selectedSeason.season} Season
+        Top 20 Players by Total Assists for {selectedSeason.season} Season
       </h1>
       <div className="mt-4">
-        <TopAssistsChart topAssists={topAssists} />
+        <TopAssistsChartTotals topAssists={topAssists} />
       </div>
       <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:grid-rows-5 lg:grid-flow-col">
         {topAssists.map((player) => (
           <li key={player.id} className="font-sem">
-            {player.name} - {player.AST} Assists
+            {player.player_name} - {player.AST} Assists
           </li>
         ))}
       </ul>

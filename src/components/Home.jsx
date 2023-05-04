@@ -20,7 +20,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="text-slate-600 text-center">
+    <div className="text-slate-600 text-center p-6 m-auto">
       <h1 className="text-3xl font-semibold antialiased mt-4 mb-6 text-center">
         Home
       </h1>
