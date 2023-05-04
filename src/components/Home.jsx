@@ -24,7 +24,7 @@ const Home = () => {
       <h1 className="text-3xl font-semibold antialiased mt-4 mb-6 text-center">
         Home
       </h1>
-      <div className="overflow-x-auto" data-theme="winter">
+      <div className="overflow-x-auto w-auto" data-theme="winter">
         <table className="table w-full text-center">
           {/* head */}
           <thead>
