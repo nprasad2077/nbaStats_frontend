@@ -15,6 +15,11 @@ Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const options = {
   indexAxis: "y",
+  layout: {
+    padding: {
+      left: 0,
+    },
+  },
   scales: {
     y: {
       offset: true,
@@ -32,7 +37,7 @@ const options = {
       position: "bottom",
     },
     title: {
-      display: true,
+      display: false,
       text: "Top Rebounds per Game by Season",
     },
     tooltip: {
@@ -82,6 +87,5 @@ const TopReboundsChart = ({ topTRB, topORB, topDRB }) => {
 
   return <Bar options={options} data={data} />;
 };
-
 
 export default TopReboundsChart;

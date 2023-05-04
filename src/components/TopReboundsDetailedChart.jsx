@@ -15,21 +15,22 @@ Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 
 const options = {
-  indexAxis: 'y', // Set the orientation to horizontal
+  indexAxis: 'x', // Set the orientation to horizontal
   scales: {
-    x: {
-      stacked: false,
+    xAxes: [{
+      stacked: true,
       ticks: {
         beginAtZero: true,
       },
-    },
-    y: {
+    }],
+    yAxes: [{
       stacked: true,
-      barPercentage: 0.4, // Adjust the width of each bar
-      categoryPercentage: 0.5, // Adjust the space between each group of bars
-    },
+      barPercentage: 0.8, // Adjust the space between the y-axis values
+      categoryPercentage: 0.5, // Adjust the height of each bar
+    }],
   },
 };
+
 
 
 const TopReboundsDetailedChart = ({ topTRB }) => {
@@ -45,7 +46,8 @@ const TopReboundsDetailedChart = ({ topTRB }) => {
         label: "Total Rebounds",
         data: playerTRB,
         borderColor: "rgb(75, 192, 192)",
-        backgroundColor: "rgba(40, 192, 192, 0.2)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderWidth: 1, // Add border width to the bars
         barThickness: 10,
         barPercentage: 0.8,
         categoryPercentage: 0.8,
@@ -53,8 +55,9 @@ const TopReboundsDetailedChart = ({ topTRB }) => {
       {
         label: "Offensive Rebounds",
         data: playerORB,
-        borderColor: "rgb(255, 206, 0)",
-        backgroundColor: "rgba(255, 206, 25, 1.0)",
+        borderColor: "rgb(255, 206, 86)",
+        backgroundColor: "rgba(255, 206, 86, 0.2)",
+        borderWidth: 1, // Add border width to the bars
         barThickness: 10,
         barPercentage: 0.8,
         categoryPercentage: 0.8,
@@ -62,8 +65,9 @@ const TopReboundsDetailedChart = ({ topTRB }) => {
       {
         label: "Defensive Rebounds",
         data: playerDRB,
-        borderColor: "rgb(255, 0, 0)",
-        backgroundColor: "rgba(255, 0, 0, 0.6)",
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderWidth: 1, // Add border width to the bars
         barThickness: 10,
         barPercentage: 0.8,
         categoryPercentage: 0.8,

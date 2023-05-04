@@ -119,10 +119,10 @@ const TopRebounds = () => {
           {topDRB[0]?.DRB || 0}
         </li>
       </ul>
-      <div className="mt-4">
+      <div className="mt-4 w-auto">
         <TopReboundsChart topTRB={topTRB} topORB={topORB} topDRB={topDRB} />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 w-auto">
         <TopReboundsDetailedChart topTRB={topTRB} />
       </div>
     </div>
