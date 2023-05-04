@@ -77,6 +77,19 @@ const TopScorers = () => {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const [topScorers, setTopScorers] = useState([]);
 
+  const playButton = () => {
+    let i = 1;
+    const intervalId = setInterval(() => {
+      if (i < seasons.length) {
+        setSelectedSeason(seasons[seasons.length - i]);
+        i++;
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 4000);
+  };
+  
+
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
     fetch(
@@ -93,6 +106,9 @@ const TopScorers = () => {
           selectedSeason={selectedSeason}
           setSelectedSeason={setSelectedSeason}
         />
+        <button onClick={playButton} class="mt-4">
+          play
+        </button>
       </div>
 
       <h1 className="text-3xl font-semibold antialiased text-center mb-4">
