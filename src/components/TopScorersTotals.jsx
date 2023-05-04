@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import TopScorersChart from "./TopScorersChart";
+import TopScorersChartTotals from "./TopScorersChartTotals";
 
 const seasons = [
   { season: "2022-2023" },
@@ -18,7 +18,7 @@ const seasons = [
 
 const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   return (
-    <div className="w-72 mt-4 text-black">
+    <div className="w-72 my-4 text-black">
       <Listbox value={selectedSeason} onChange={setSelectedSeason}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-300 sm:text-sm">
@@ -96,15 +96,15 @@ const TopScorersTotals = () => {
       </div>
 
       <h1 className="text-3xl font-semibold antialiased text-center mb-4">
-        Top 20 Scorers per Game for {selectedSeason.season} Season
+        Top 20 Scorers by Total Points for {selectedSeason.season} Season
       </h1>
       <div className="mt-4">
-        <TopScorersChart topScorers={topScorers} />
+        <TopScorersChartTotals topScorers={topScorers} />
       </div>
       <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:grid-rows-5 lg:grid-flow-col">
         {topScorers.map((player, index) => (
           <li key={player.id} className="font-sem">
-            {player.name} - {player.PTS} points
+            {player.player_name} - {player.PTS} points
           </li>
         ))}
       </ul>
