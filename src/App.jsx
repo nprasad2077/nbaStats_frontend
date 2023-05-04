@@ -13,6 +13,9 @@ import TopPtsScatterPlot from "./components/TopPtsScatterPlot";
 import TopPtsScatterPlotPlayoffs2009 from "./components/TopPtsScatterPlotPlayoffs2009.jsx";
 import TopScorersPlayoffs from "./components/TopScorersPlayoffs.jsx";
 import TopAssistsPlayoffs from "./components/TopAssistsPlayoffs.jsx";
+import TopScorersTotals from "./components/TopScorersTotals.jsx";
+import TopAssistsTotals from "./components/TopAssistsTotals.jsx";
+import TopReboundsTotals from "./components/TopReboundsTotals.jsx";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +28,6 @@ function App() {
       return () => clearTimeout(timer);
     }
   }, [menuOpen]);
-
 
   return (
     <div class="bg-gray-100 min-h-screen">
@@ -49,10 +51,16 @@ function App() {
             <div className="flex flex-wrap lg:justify-start w-full lg:w-auto">
               {/* Add first row navbar items here */}
               <Link
-                to="/topscorers"
+                to="/topscorers_totals"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
                 Top Scorers
+              </Link>
+              <Link
+                to="/top_assists_totals"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+              >
+                Top Assists
               </Link>
               <Link
                 to="/three_two_point_trends"
@@ -61,13 +69,7 @@ function App() {
                 Shooting Trends
               </Link>
               <Link
-                to="/top_assists"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
-              >
-                Top Assists
-              </Link>
-              <Link
-                to="/top_rebounds"
+                to="/top_rebounds_totals"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
                 Top Rebounders
@@ -115,14 +117,17 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/topscorers" element={<TopScorers />} />
+          <Route path="/topscorers_totals" element={<TopScorersTotals />} />
           <Route path="/topscorers_playoffs" element={<TopScorersPlayoffs />} />
           <Route path="/three_two_point_trends" element={<PointTrend />} />
           <Route path="/top_assists" element={<TopAssists />} />
+          <Route path="/top_assists_totals" element={<TopAssistsTotals />} />
           <Route
             path="/top_assists_playoffs"
             element={<TopAssistsPlayoffs />}
           />
           <Route path="/top_rebounds" element={<TopRebounds />} />
+          <Route path="/top_rebounds_totals" element={<TopReboundsTotals />} />
           <Route path="/ppg_histogram" element={<PointsPerGameHistogram />} />
           <Route path="/top_pts_scatter_plot" element={<TopPtsScatterPlot />} />
 

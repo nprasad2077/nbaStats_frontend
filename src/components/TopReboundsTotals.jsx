@@ -2,9 +2,11 @@ import React from "react";
 import { useState, useEffect, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import TopAssistsChartPlayoffs from "./TopAssistsChartPlayoffs";
+import TopReboundsChartTotals from "./TopReboundsChartTotals";
+import TopReboundsDetailedChartTotals from "./TopReboundsDetailedChartTotals";
 
 const seasons = [
+  { season: "2022-2023" },
   { season: "2021-2022" },
   { season: "2020-2021" },
   { season: "2019-2020" },
@@ -12,17 +14,11 @@ const seasons = [
   { season: "2017-2018" },
   { season: "2016-2017" },
   { season: "2015-2016" },
-  { season: '2014-2015' },
-  { season: '2013-2014' },
-  { season: '2012-2013' },
-  { season: '2011-2012' },
-  { season: '2010-2011' },
-  { season: '2009-2010' },
+  { season: "2014-2015" },
 ];
-
 const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   return (
-    <div className="w-72 mt-4 text-black">
+    <div className="w-72 my-4 text-black">
       <Listbox value={selectedSeason} onChange={setSelectedSeason}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-300 sm:text-sm">
@@ -77,44 +73,60 @@ const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   );
 };
 
-const TopAssistsPlayoffs = () => {
+const TopReboundsTotals = () => {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
-  const [topAssists, setTopAssists] = useState([]);
+  const [topTRB, setTopTRB] = useState([]);
+  const [topORB, setTopORB] = useState([]);
+  const [topDRB, setTopDRB] = useState([]);
 
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
-    fetch(`https://nba-stats-db.herokuapp.com/api/top_assists/playoffs/${tailEndSeason}/`)
+    fetch(`https://nba-stats-db.herokuapp.com/api/top_rebounds/totals/${tailEndSeason}/`)
       .then((response) => response.json())
-      .then((data) => setTopAssists(data.results));
+      .then((data) => setTopTRB(data.results));
+    fetch(`https://nba-stats-db.herokuapp.com/api/top_rebounds_offensive/totals/${tailEndSeason}/`)
+      .then((response) => response.json())
+      .then((data) => setTopORB(data.results));
+
+    fetch(`https://nba-stats-db.herokuapp.com/api/top_rebounds_defensive/totals/${tailEndSeason}/`)
+      .then((response) => response.json())
+      .then((data) => setTopDRB(data.results));
   }, [selectedSeason]);
 
   return (
-    <div class="text-center text-slate-600">
-      <div class="flex flex-col items-start">
+    <div className="text-center text-slate-600">
+      <div className="flex flex-col items-start">
         <DropDownSeason
           selectedSeason={selectedSeason}
           setSelectedSeason={setSelectedSeason}
         />
       </div>
 
-      <h1 class="text-3xl font-semibold antialiased text-center mb-4">
-        Top 20 Players by Total Assists for {selectedSeason.season} Playoffs
+      <h1 className="text-3xl font-semibold antialiased text-center mb-4">
+        Top Rebounders by Total Rebounds for {selectedSeason.season} Season
       </h1>
-
-      <div class="mt-4">
-        <TopAssistsChartPlayoffs topAssists={topAssists} />
-      </div>
-
-      <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:grid-rows-5 lg:grid-flow-col">
-        {topAssists.map((player) => (
-          <li key={player.id} class="font-sem">
-            {player.player_name} - {player.AST} Assists
-          </li>
-        ))}
+      <ul>
+        <li className="font-sem">
+          Top Total Rebounds - {topTRB[0]?.player_name || "N/A"} -{" "}
+          {topTRB[0]?.TRB || 0}
+        </li>
+        <li className="font-sem">
+          Top Total Offensive Rebounds - {topORB[0]?.player_name || "N/A"} -{" "}
+          {topORB[0]?.ORB || 0}
+        </li>
+        <li className="font-sem">
+          Top Total Defensive Rebounds - {topDRB[0]?.player_name || "N/A"} -{" "}
+          {topDRB[0]?.DRB || 0}
+        </li>
       </ul>
-      
+      <div className="mt-4 w-auto">
+        <TopReboundsChartTotals topTRB={topTRB} topORB={topORB} topDRB={topDRB} />
+      </div>
+      <div className="mt-4 w-auto">
+        <TopReboundsDetailedChartTotals topTRB={topTRB} />
+      </div>
     </div>
   );
 };
 
-export default TopAssistsPlayoffs;
+export default TopReboundsTotals;
