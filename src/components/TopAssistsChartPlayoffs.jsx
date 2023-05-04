@@ -21,6 +21,13 @@ Chart.register(
 
 const options = {
   indexAxis: 'y',
+  scales: {
+    x: {
+      ticks: {
+        beginAtZero: true,
+      },
+    },
+  },
   elements: {
     bar: {
       borderWidth: 2,
@@ -29,10 +36,10 @@ const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'right',
+      position: 'bottom',
     },
     title: {
-      display: true,
+      display: false,
       text: 'Top 20 Assists per Season',
     },
   },

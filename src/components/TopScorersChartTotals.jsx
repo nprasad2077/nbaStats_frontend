@@ -13,11 +13,11 @@ const TopScorersChartTotals = ({ topScorers }) => {
     labels: playerNames,
     datasets: [
       {
-        label: "Points",
+        label: "Total Points",
         data: playerPoints,
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
+        borderWidth: 2,
       },
     ],
   };
@@ -29,6 +29,21 @@ const TopScorersChartTotals = ({ topScorers }) => {
         ticks: {
           beginAtZero: true,
         },
+      },
+    },
+    elements: {
+      bar: {
+        borderWidth: 2,
+      },
+    },
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+      },
+      title: {
+        display: false,
+        text: 'Top 20 Scorers per Season',
       },
     },
   };

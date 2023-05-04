@@ -21,6 +21,13 @@ Chart.register(
 
 const options = {
   indexAxis: 'y',
+  scales: {
+    x: {
+      ticks: {
+        beginAtZero: true,
+      },
+    },
+  },
   elements: {
     bar: {
       borderWidth: 2,
@@ -29,10 +36,10 @@ const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'right',
+      position: 'bottom',
     },
     title: {
-      display: true,
+      display: false,
       text: 'Top 20 Assists per Season',
     },
   },
@@ -46,7 +53,7 @@ const TopAssistsChartTotals = ({ topAssists }) => {
     labels: playerNames,
     datasets: [
       {
-        label: 'Assists',
+        label: 'Total Assists',
         data: playerAssists,
         borderColor: 'rgb(75, 192, 192)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',

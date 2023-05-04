@@ -13,7 +13,14 @@ import {
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const options = {
-  indexAxis: "y",
+  indexAxis: 'y',
+  scales: {
+    x: {
+      ticks: {
+        beginAtZero: true,
+      },
+    },
+  },
   elements: {
     bar: {
       borderWidth: 2,
@@ -22,11 +29,11 @@ const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: "right",
+      position: 'bottom',
     },
     title: {
-      display: true,
-      text: "Top 20 Assists per Season",
+      display: false,
+      text: 'Top 20 Assists per Season',
     },
   },
 };
