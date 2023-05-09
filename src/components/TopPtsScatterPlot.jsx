@@ -188,7 +188,7 @@ const TopPtsScatterPlot = () => {
   return (
     <div className="container mx-auto">
       <h1 className="text-3xl font-semibold antialiased text-center mt-4 text-slate-600">
-        Top 25 Scorers since 2013-2014 season visualized by Total Points/Win
+        Top 25 Scorers since 2009-2010 season visualized by Total Points/Win
         Shares per season
       </h1>
       <div style={{ position: "relative", height: "60vh", width: "100%" }}>
@@ -201,7 +201,7 @@ const TopPtsScatterPlot = () => {
       <div class="flex flex-col text-black mt-4 p-8">
         <h3 class="font-sans subpixel-antialiased">
           Data is derived by first creating a list of the top 25 scoring players
-          by total points in the regular season since the 2013-2014 season.
+          by total points in the regular season since the 2009-2010 season.
           Then, the players are mapped on the chart by Total Points on this
           X-axis and Win Shares on Y-Axis. This shows any correlation between a
           player's individual points scored, and win shares*{" "}
