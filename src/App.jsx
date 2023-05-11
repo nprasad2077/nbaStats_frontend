@@ -35,7 +35,7 @@ function App() {
       <div className="navbar bg-base-300" data-theme="winter">
         <div className="container py-2 flex flex-wrap items-center justify-between">
           <Link to="/" className="btn btn-ghost normal-case text-2xl">
-            NBA Data
+            NBA Data Explorer
           </Link>
           <button
             className="lg:hidden btn btn-ghost normal-case text-lg"
