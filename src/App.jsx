@@ -16,6 +16,7 @@ import TopAssistsPlayoffs from "./components/TopAssistsPlayoffs.jsx";
 import TopScorersTotals from "./components/TopScorersTotals.jsx";
 import TopAssistsTotals from "./components/TopAssistsTotals.jsx";
 import TopReboundsTotals from "./components/TopReboundsTotals.jsx";
+import LeBronJamesShotChart from "./components/LeBronJamesShotChart.jsx";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -34,7 +35,7 @@ function App() {
       <div className="navbar bg-base-300" data-theme="winter">
         <div className="container py-2 flex flex-wrap items-center justify-between">
           <Link to="/" className="btn btn-ghost normal-case text-2xl">
-            NBA Data
+            NBA Data Explorer
           </Link>
           <button
             className="lg:hidden btn btn-ghost normal-case text-lg"
@@ -109,6 +110,12 @@ function App() {
               >
                 Top Scorers vs. Win Shares {"(playoffs)"}
               </Link>
+              {/* <Link
+                to="/lebron_james_shot_chart"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+              >
+                LeBron James Shot Chart
+              </Link> */}
             </div>
           </div>
         </div>
@@ -134,6 +141,10 @@ function App() {
           <Route
             path="/top_pts_scatter_plot_2009_playoffs"
             element={<TopPtsScatterPlotPlayoffs2009 />}
+          />
+          <Route
+            path="/lebron_james_shot_chart"
+            element={<LeBronJamesShotChart />}
           />
         </Routes>
       </div>

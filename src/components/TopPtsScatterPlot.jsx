@@ -63,13 +63,13 @@ const TopPtsScatterPlot = () => {
               x: {
                 title: {
                   display: true,
-                  text: "PTS",
+                  text: "Points",
                 },
               },
               y: {
                 title: {
                   display: true,
-                  text: "WS",
+                  text: "Win Shares",
                 },
               },
             },
