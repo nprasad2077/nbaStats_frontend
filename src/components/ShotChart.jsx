@@ -4,43 +4,43 @@ import axios from "axios";
 
 export default function ShotChart() {
   const [shotData, setShotData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = async (url) => {
     const result = await axios.get(url);
     if (result.data.next) {
-      // If next page exists, then fetch and add to return, if not return existing data (complete).
       const nextPage = await fetchData(result.data.next);
       return [...result.data.results, ...nextPage];
     } else {
-      // if no next page, return final data.
       return result.data.results;
     }
   };
 
   useEffect(() => {
-    fetchData(
-      `https://nba-stats-db.herokuapp.com/api/shot_chart_data/LeBron%20James/2018/`
-    )
-      .then((data) => setShotData(data))
-      .catch((err) => console.log(err));
+    fetchData(`https://nba-stats-db.herokuapp.com/api/shot_chart_data/LeBron%20James/2018/`)
+      .then((data) => {
+        setShotData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   }, []);
 
-  console.log(shotData);
-
-  // Check if shotData is loaded and has the results property
-  if (!shotData || !shotData.results) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  const madeShots = shotData.results.filter((shot) => shot.result);
-  const missedShots = shotData.results.filter((shot) => !shot.result);
+  const madeShots = shotData.filter((shot) => shot.result);
+  const missedShots = shotData.filter((shot) => !shot.result);
 
   return (
     <Plot
       data={[
         {
           x: madeShots.map((shot) => shot.left),
-          y: madeShots.map((shot) => 472 - shot.top), // Directly map 'top' to y coordinate
+          y: madeShots.map((shot) => 472 - shot.top),
           name: "Made",
           marker: { color: "green", size: 5 },
           mode: "markers",
@@ -48,7 +48,7 @@ export default function ShotChart() {
         },
         {
           x: missedShots.map((shot) => shot.left),
-          y: missedShots.map((shot) => 472 - shot.top), // Directly map 'top' to y coordinate
+          y: missedShots.map((shot) => 472 - shot.top),
           name: "Missed",
           marker: { color: "red", size: 5 },
           mode: "markers",
