@@ -5,6 +5,8 @@ import axios from "axios";
 export default function ShotChart() {
   const [shotData, setShotData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [season, setSeason] = useState(2020)
+  const [player, setPlayer] = useState('LeBron James')
 
   const fetchData = async (url) => {
     const result = await axios.get(url);
@@ -17,7 +19,7 @@ export default function ShotChart() {
   };
 
   useEffect(() => {
-    fetchData(`https://nba-stats-db.herokuapp.com/api/shot_chart_data/LeBron%20James/2020/`)
+    fetchData(`https://nba-stats-db.herokuapp.com/api/shot_chart_data/${player}/${season}/`)
       .then((data) => {
         setShotData(data);
         setLoading(false);
@@ -58,9 +60,9 @@ export default function ShotChart() {
         },
       ]}
       layout={{
-        xaxis: { range: [0, 500] },
-        yaxis: { range: [0, 472] },
-        title: "Shot Chart",
+        xaxis: { range: [0, 500], showticklabels: false },
+        yaxis: { range: [0, 472], showticklabels: false },
+        title: `${player} ${season} Season/Playoff Shot Chart`,
         width: 500,
         height: 472,
         autosize: false,
