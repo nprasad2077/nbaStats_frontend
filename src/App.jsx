@@ -16,7 +16,7 @@ import TopAssistsPlayoffs from "./components/TopAssistsPlayoffs.jsx";
 import TopScorersTotals from "./components/TopScorersTotals.jsx";
 import TopAssistsTotals from "./components/TopAssistsTotals.jsx";
 import TopReboundsTotals from "./components/TopReboundsTotals.jsx";
-import LeBronJamesShotChart from "./components/LebronJamesShotChart";
+import LeBronJamesShotChart from "./components/LeBronJamesShotChart.jsx";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -110,12 +110,12 @@ function App() {
               >
                 Top Scorers vs. Win Shares {"(playoffs)"}
               </Link>
-              <Link
+              {/* <Link
                 to="/lebron_james_shot_chart"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
                 LeBron James Shot Chart
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
