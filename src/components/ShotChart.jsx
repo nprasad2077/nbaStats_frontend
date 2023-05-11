@@ -17,7 +17,7 @@ export default function ShotChart() {
   };
 
   useEffect(() => {
-    fetchData(`https://nba-stats-db.herokuapp.com/api/shot_chart_data/LeBron%20James/2018/`)
+    fetchData(`https://nba-stats-db.herokuapp.com/api/shot_chart_data/LeBron%20James/2020/`)
       .then((data) => {
         setShotData(data);
         setLoading(false);
@@ -27,6 +27,8 @@ export default function ShotChart() {
         setLoading(false);
       });
   }, []);
+
+  console.log(shotData);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -42,7 +44,7 @@ export default function ShotChart() {
           x: madeShots.map((shot) => shot.left),
           y: madeShots.map((shot) => 472 - shot.top),
           name: "Made",
-          marker: { color: "green", size: 5 },
+          marker: { color: "green", size: 5, opacity: 0.8 },
           mode: "markers",
           type: "scatter",
         },
@@ -50,7 +52,7 @@ export default function ShotChart() {
           x: missedShots.map((shot) => shot.left),
           y: missedShots.map((shot) => 472 - shot.top),
           name: "Missed",
-          marker: { color: "red", size: 5 },
+          marker: { color: "red", size: 5, opacity: 0.5 },
           mode: "markers",
           type: "scatter",
         },
