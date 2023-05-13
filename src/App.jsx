@@ -58,17 +58,37 @@ function App() {
                 Top Scorers
               </Link>
               <Link
-                to="/top_assists_totals"
+                to="/top_pts_scatter_plot"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
-                Top Assists
+                Top Scorers vs. Win Shares
               </Link>
+              <Link
+                to="/topscorers_playoffs"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+              >
+                Top Scorers {"(playoffs)"}
+              </Link>
+              <Link
+                to="/top_pts_scatter_plot_2009_playoffs"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+              >
+                Top Scorers vs. Win Shares {"(playoffs)"}
+              </Link>
+              
+              
               <Link
                 to="/three_two_point_trends"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
                 Shooting Trends
               </Link>
+             
+              
+            </div>
+            {/* Second row of navbar items */}
+            <div className="flex flex-wrap justify-center w-full lg:w-auto mt-2 lg:mt-0">
+              {/* Add second row navbar items here */}
               <Link
                 to="/top_rebounds_totals"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
@@ -76,27 +96,10 @@ function App() {
                 Top Rebounders
               </Link>
               <Link
-                to="/ppg_histogram"
+                to="/top_assists_totals"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
-                Points Per Game Histogram
-              </Link>
-              <Link
-                to="/top_pts_scatter_plot"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
-              >
-                Top Scorers vs. Win Shares
-              </Link>
-            </div>
-            {/* Second row of navbar items */}
-            <div className="flex flex-wrap justify-center w-full lg:w-auto mt-2 lg:mt-0">
-              {/* Add second row navbar items here */}
-
-              <Link
-                to="/topscorers_playoffs"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
-              >
-                Top Scorers {"(playoffs)"}
+                Top Assists
               </Link>
               <Link
                 to="/top_assists_playoffs"
@@ -105,10 +108,10 @@ function App() {
                 Top Assists {"(playoffs)"}
               </Link>
               <Link
-                to="/top_pts_scatter_plot_2009_playoffs"
+                to="/ppg_histogram"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
-                Top Scorers vs. Win Shares {"(playoffs)"}
+                Points Per Game Histogram
               </Link>
               {/* <Link
                 to="/lebron_james_shot_chart"
