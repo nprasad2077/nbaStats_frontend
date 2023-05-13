@@ -141,7 +141,7 @@ export default function ShotChart() {
               (shot) =>
                 `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Time Remaining: ${shot.time_remaining}<br>Distance: ${shot.distance_ft} ft<br>Shot Type: ${shot.shot_type}<br>${shot.team} ${'('+shot.lebron_team_score + ')'} vs. ${shot.opponent} ${'('+ shot.opponent_team_score+')'}<br>`
             ),
-            hoverInfo: "text",
+            hoverinfo: "text",
           },
           {
             x: missedShots.map((shot) => shot.left * scaleFactor),
@@ -154,7 +154,7 @@ export default function ShotChart() {
               (shot) =>
               `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Time Remaining: ${shot.time_remaining}<br>Distance: ${shot.distance_ft} ft<br>Shot Type: ${shot.shot_type}<br>${shot.team} ${'('+shot.lebron_team_score + ')'} vs. ${shot.opponent} ${'('+ shot.opponent_team_score+')'}<br>`
             ),
-            hoverInfo: "text",
+            hoverinfo: "text",
           },
         ]}
         layout={{
