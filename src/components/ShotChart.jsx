@@ -124,22 +124,24 @@ export default function ShotChart() {
   const madeShots = shotData.filter((shot) => shot.result);
   const missedShots = shotData.filter((shot) => !shot.result);
 
+  const scaleFactor = 2
+
   return (
     <div className="flex flex-col justify-center items-center mt-6">
 
       <Plot
         data={[
           {
-            x: madeShots.map((shot) => shot.left),
-            y: madeShots.map((shot) => 472 - shot.top),
+            x: madeShots.map((shot) => shot.left * scaleFactor),
+            y: madeShots.map((shot) => (472 - shot.top) * scaleFactor),
             name: "Made",
             marker: { color: "green", size: 5, opacity: 0.8 },
             mode: "markers",
             type: "scatter",
           },
           {
-            x: missedShots.map((shot) => shot.left),
-            y: missedShots.map((shot) => 472 - shot.top),
+            x: missedShots.map((shot) => shot.left * scaleFactor),
+            y: missedShots.map((shot) => (472 - shot.top) * scaleFactor),
             name: "Missed",
             marker: { color: "red", size: 5, opacity: 0.5 },
             mode: "markers",
@@ -147,11 +149,11 @@ export default function ShotChart() {
           },
         ]}
         layout={{
-          xaxis: { range: [0, 500], showticklabels: false },
-          yaxis: { range: [0, 472], showticklabels: false },
+          xaxis: { range: [0, 500 * scaleFactor], showticklabels: false },
+          yaxis: { range: [0, 472 * scaleFactor], showticklabels: false },
           title: `${player} ${selectedSeason.season.split("-")[1]} Season/Playoff Shot Chart`,
-          width: 500,
-          height: 472,
+          width: 500 * scaleFactor,
+          height: 472 * scaleFactor,
           autosize: false,
           hovermode: "closest",
           showlegend: false,
@@ -161,9 +163,9 @@ export default function ShotChart() {
               xref: "x",
               yref: "y",
               x: 0,
-              y: 472,
-              sizex: 500,
-              sizey: 472,
+              y: 472 * scaleFactor,
+              sizex: 500 * scaleFactor,
+              sizey: 472 * scaleFactor,
               sizing: "stretch",
               opacity: 1.0,
               layer: "below",
