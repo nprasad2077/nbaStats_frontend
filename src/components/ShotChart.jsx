@@ -96,6 +96,7 @@ export default function ShotChart() {
   };
 
   useEffect(() => {
+    setLoading(true)
     const tailEndSeason = selectedSeason.season.split("-")[1];
     fetchData(
       `https://nba-stats-db.herokuapp.com/api/shot_chart_data/${player}/${tailEndSeason}/`
@@ -124,7 +125,7 @@ export default function ShotChart() {
   const missedShots = shotData.filter((shot) => !shot.result);
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
+    <div className="flex flex-col justify-center items-center mt-6">
 
       <Plot
         data={[
@@ -156,7 +157,7 @@ export default function ShotChart() {
           showlegend: false,
           images: [
             {
-              source: "/images/nbahalfcourt.png",
+              source: "/images/nbahalfcourt.svg",
               xref: "x",
               yref: "y",
               x: 0,
