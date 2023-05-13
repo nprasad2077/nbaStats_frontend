@@ -75,16 +75,13 @@ function App() {
               >
                 Top Scorers vs. Win Shares {"(playoffs)"}
               </Link>
-              
-              
+
               <Link
                 to="/three_two_point_trends"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
                 Shooting Trends
               </Link>
-             
-              
             </div>
             {/* Second row of navbar items */}
             <div className="flex flex-wrap justify-center w-full lg:w-auto mt-2 lg:mt-0">
@@ -113,12 +110,12 @@ function App() {
               >
                 Points Per Game Histogram
               </Link>
-              {/* <Link
+              <Link
                 to="/lebron_james_shot_chart"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
-                LeBron James Shot Chart
-              </Link> */}
+                Shot Chart
+              </Link>
             </div>
           </div>
         </div>
