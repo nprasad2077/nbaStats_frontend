@@ -96,7 +96,7 @@ export default function ShotChart() {
   };
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     const tailEndSeason = selectedSeason.season.split("-")[1];
     fetchData(
       `https://nba-stats-db.herokuapp.com/api/shot_chart_data/${player}/${tailEndSeason}/`
@@ -124,11 +124,10 @@ export default function ShotChart() {
   const madeShots = shotData.filter((shot) => shot.result);
   const missedShots = shotData.filter((shot) => !shot.result);
 
-  const scaleFactor = 2
+  const scaleFactor = 1.5;
 
   return (
     <div className="flex flex-col justify-center items-center mt-6">
-
       <Plot
         data={[
           {
@@ -138,6 +137,11 @@ export default function ShotChart() {
             marker: { color: "green", size: 5, opacity: 0.8 },
             mode: "markers",
             type: "scatter",
+            text: madeShots.map(
+              (shot) =>
+                `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Distance: ${shot.distance_ft} ft`
+            ),
+            hoverInfo: "text",
           },
           {
             x: missedShots.map((shot) => shot.left * scaleFactor),
@@ -146,12 +150,19 @@ export default function ShotChart() {
             marker: { color: "red", size: 5, opacity: 0.5 },
             mode: "markers",
             type: "scatter",
+            text: madeShots.map(
+              (shot) =>
+                `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Distance: ${shot.distance_ft} ft`
+            ),
+            hoverInfo: "text",
           },
         ]}
         layout={{
           xaxis: { range: [0, 500 * scaleFactor], showticklabels: false },
           yaxis: { range: [0, 472 * scaleFactor], showticklabels: false },
-          title: `${player} ${selectedSeason.season.split("-")[1]} Season/Playoff Shot Chart`,
+          title: `${player} ${
+            selectedSeason.season.split("-")[1]
+          } Season/Playoff Shot Chart`,
           width: 500 * scaleFactor,
           height: 472 * scaleFactor,
           autosize: false,
