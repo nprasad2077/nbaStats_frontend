@@ -139,7 +139,7 @@ export default function ShotChart() {
             type: "scatter",
             text: madeShots.map(
               (shot) =>
-                `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Distance: ${shot.distance_ft} ft`
+                `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Time Remaining: ${shot.time_remaining}<br>Distance: ${shot.distance_ft} ft<br>Shot Type: ${shot.shot_type}<br>${shot.team} ${'('+shot.lebron_team_score + ')'} vs. ${shot.opponent} ${'('+ shot.opponent_team_score+')'}<br>`
             ),
             hoverInfo: "text",
           },
@@ -152,7 +152,7 @@ export default function ShotChart() {
             type: "scatter",
             text: madeShots.map(
               (shot) =>
-                `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Distance: ${shot.distance_ft} ft`
+              `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Time Remaining: ${shot.time_remaining}<br>Distance: ${shot.distance_ft} ft<br>Shot Type: ${shot.shot_type}<br>${shot.team} ${'('+shot.lebron_team_score + ')'} vs. ${shot.opponent} ${'('+ shot.opponent_team_score+')'}<br>`
             ),
             hoverInfo: "text",
           },
