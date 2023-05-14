@@ -34,7 +34,7 @@ function App() {
     <div class="bg-gray-100 min-h-screen">
       <div className="navbar bg-base-300" data-theme="winter">
         <div className="container py-2 flex flex-wrap items-center justify-between">
-          <Link to="/" className="btn btn-ghost normal-case text-2xl">
+          <Link to="/" className="btn btn-ghost normal-case text-3xl mb-2">
             NBA Data Explorer
           </Link>
           <button
@@ -53,66 +53,65 @@ function App() {
               {/* Add first row navbar items here */}
               <Link
                 to="/topscorers_totals"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
                 Top Scorers
               </Link>
               <Link
                 to="/top_pts_scatter_plot"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
                 Top Scorers vs. Win Shares
               </Link>
               <Link
                 to="/topscorers_playoffs"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
                 Top Scorers {"(playoffs)"}
               </Link>
               <Link
                 to="/top_pts_scatter_plot_2009_playoffs"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
                 Top Scorers vs. Win Shares {"(playoffs)"}
               </Link>
-
               <Link
-                to="/three_two_point_trends"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                to="/lebron_james_shot_chart"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
-                Shooting Trends
+                Shot Chart
               </Link>
             </div>
             {/* Second row of navbar items */}
             <div className="flex flex-wrap justify-center w-full lg:w-auto mt-2 lg:mt-0">
               {/* Add second row navbar items here */}
               <Link
-                to="/lebron_james_shot_chart"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                to="/three_two_point_trends"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
-                Shot Chart
+                Shooting Trends
               </Link>
               <Link
                 to="/top_rebounds_totals"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
                 Top Rebounders
               </Link>
               <Link
                 to="/top_assists_totals"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
                 Top Assists
               </Link>
               <Link
                 to="/top_assists_playoffs"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
                 Top Assists {"(playoffs)"}
               </Link>
               <Link
                 to="/ppg_histogram"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-2"
               >
                 Points Per Game Histogram
               </Link>
