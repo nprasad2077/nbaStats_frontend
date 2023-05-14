@@ -82,7 +82,6 @@ export default function ShotChart() {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const [shotData, setShotData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [season, setSeason] = useState(2020);
   const [player, setPlayer] = useState("LeBron James");
 
   const fetchData = async (url) => {
@@ -111,12 +110,10 @@ export default function ShotChart() {
       });
   }, [selectedSeason]);
 
-  console.log(shotData);
-
   if (loading) {
     return (
-      <div className="flex justify-center items-center mt-6">
-        <progress className="progress progress-accent w-56"></progress>
+      <div className="flex justify-center items-center mt-6 w-full">
+        <progress className="progress progress-accent w-72"></progress>
       </div>
     );
   }

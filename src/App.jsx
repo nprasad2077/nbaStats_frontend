@@ -87,6 +87,12 @@ function App() {
             <div className="flex flex-wrap justify-center w-full lg:w-auto mt-2 lg:mt-0">
               {/* Add second row navbar items here */}
               <Link
+                to="/lebron_james_shot_chart"
+                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
+              >
+                Shot Chart
+              </Link>
+              <Link
                 to="/top_rebounds_totals"
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
@@ -109,12 +115,6 @@ function App() {
                 className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
               >
                 Points Per Game Histogram
-              </Link>
-              <Link
-                to="/lebron_james_shot_chart"
-                className="btn btn-ghost normal-case text-lg mt-2 lg:mt-0 lg:ml-4"
-              >
-                Shot Chart
               </Link>
             </div>
           </div>
