@@ -93,7 +93,6 @@ const TopScorers = () => {
       }
     }, 4000);
   };
-  
 
   useEffect(() => {
     const tailEndSeason = selectedSeason.season.split("-")[1];
