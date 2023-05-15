@@ -118,59 +118,96 @@ export default function ShotChart() {
     );
   }
 
-  const madeShots = shotData.filter((shot) => shot.result);
-  const missedShots = shotData.filter((shot) => !shot.result);
+  const scaleFactor = 1.75;
+  // Get a list of all unique opponent teams
+  const allTeams = [...new Set(shotData.map((shot) => shot.opponent))];
 
-  const scaleFactor = 1.5;
+  const traces = allTeams.flatMap((team) => {
+    const teamShots = shotData.filter((shot) => shot.opponent === team);
+    const madeShots = teamShots.filter((shot) => shot.result);
+    const missedShots = teamShots.filter((shot) => !shot.result);
+
+    return [
+      {
+        x: madeShots.map((shot) => shot.left * scaleFactor),
+        y: madeShots.map((shot) => (472 - shot.top) * scaleFactor),
+        name: "Made",
+        marker: { color: "green", size: 5, opacity: 0.8 },
+        mode: "markers",
+        type: "scatter",
+        text: madeShots.map(
+          (shot) =>
+            `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Time Remaining: ${
+              shot.time_remaining
+            }<br>Distance: ${shot.distance_ft} ft<br>Shot Type: ${
+              shot.shot_type
+            }<br>${shot.team} ${"(" + shot.lebron_team_score + ")"} vs. ${
+              shot.opponent
+            } ${"(" + shot.opponent_team_score + ")"}<br>`
+        ), // Add your information here
+        hoverinfo: "text",
+      },
+      {
+        x: missedShots.map((shot) => shot.left * scaleFactor),
+        y: missedShots.map((shot) => (472 - shot.top) * scaleFactor),
+        name: "Missed",
+        marker: { color: "red", size: 5, opacity: 0.5 },
+        mode: "markers",
+        type: "scatter",
+        text: missedShots.map(
+          (shot) =>
+            `Date: ${shot.date}<br>Quarter: ${shot.qtr}<br>Time Remaining: ${
+              shot.time_remaining
+            }<br>Distance: ${shot.distance_ft} ft<br>Shot Type: ${
+              shot.shot_type
+            }<br>${shot.team} ${"(" + shot.lebron_team_score + ")"} vs. ${
+              shot.opponent
+            } ${"(" + shot.opponent_team_score + ")"}<br>`
+        ), // Add your information here
+        hoverinfo: "text",
+      },
+    ];
+  });
+
+  // Generate steps for the slider
+  const steps = allTeams.map((team, i) => ({
+    method: "restyle",
+    args: [
+      "marker.opacity",
+      traces.map((_, j) => (j === i * 2 || j === i * 2 + 1 ? 1 : 0.1)),
+    ],
+    label: team,
+  }));
+
+  // Sort the steps array by the label property (i.e., team name)
+  steps.sort((a, b) => a.label.localeCompare(b.label));
+
+  // Add a step for 'all'
+  steps.unshift({
+    method: "restyle",
+    args: ["marker.opacity", traces.map(() => 1)], // set opacity to 1 for all traces
+    label: "All",
+  });
+
+  // rest of the slider configuration
+  const slider = {
+    steps: steps,
+    active: 0, // 'all' step will be active by default
+    currentvalue: {
+      visible: true,
+      prefix: "Opponent: ",
+      xanchor: "right",
+      font: { size: 20, color: "#666" },
+      pad: { t: 0 }, // this will increase the height of the slider
+    },
+  };
 
   return (
     <div className="flex flex-col justify-center items-center mt-6">
       <Plot
-        data={[
-          {
-            x: madeShots.map((shot) => shot.left * scaleFactor),
-            y: madeShots.map((shot) => (472 - shot.top) * scaleFactor),
-            name: "Made",
-            marker: { color: "green", size: 5, opacity: 0.8 },
-            mode: "markers",
-            type: "scatter",
-            text: madeShots.map(
-              (shot) =>
-                `Date: ${shot.date}<br>Quarter: ${
-                  shot.qtr
-                }<br>Time Remaining: ${shot.time_remaining}<br>Distance: ${
-                  shot.distance_ft
-                } ft<br>Shot Type: ${shot.shot_type}<br>${shot.team} ${
-                  "(" + shot.lebron_team_score + ")"
-                } vs. ${shot.opponent} ${
-                  "(" + shot.opponent_team_score + ")"
-                }<br>`
-            ),
-            hoverinfo: "text",
-          },
-          {
-            x: missedShots.map((shot) => shot.left * scaleFactor),
-            y: missedShots.map((shot) => (472 - shot.top) * scaleFactor),
-            name: "Missed",
-            marker: { color: "red", size: 5, opacity: 0.5 },
-            mode: "markers",
-            type: "scatter",
-            text: missedShots.map(
-              (shot) =>
-                `Date: ${shot.date}<br>Quarter: ${
-                  shot.qtr
-                }<br>Time Remaining: ${shot.time_remaining}<br>Distance: ${
-                  shot.distance_ft
-                } ft<br>Shot Type: ${shot.shot_type}<br>${shot.team} ${
-                  "(" + shot.lebron_team_score + ")"
-                } vs. ${shot.opponent} ${
-                  "(" + shot.opponent_team_score + ")"
-                }<br>`
-            ),
-            hoverinfo: "text",
-          },
-        ]}
+        data={traces}
         layout={{
+          sliders: [slider],
           xaxis: { range: [0, 500 * scaleFactor], showticklabels: false },
           yaxis: { range: [0, 472 * scaleFactor], showticklabels: false },
           title: `${player} ${
