@@ -220,7 +220,7 @@ export default function ShotEfficiencyChart() {
   const leftCornerThree = left.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return false } if (shot.top > 140){return false} if (shot.shot_type == '3') {return true}})
   const rightWingThree = right.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return false } if (shot.top < 140){return false} if (shot.shot_type == '3') {return true}})
   const leftWingThree = left.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return false } if (shot.top < 140){return false} if (shot.shot_type == '3') {return true}})
-  console.log(rightWingThree);
+  // console.log(rightWingThree);
 
   return (
     <div className="flex flex-col justify-center items-center mt-6">
