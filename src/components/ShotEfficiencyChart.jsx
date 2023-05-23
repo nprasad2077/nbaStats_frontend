@@ -78,7 +78,7 @@ const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   );
 };
 
-export default function ShotChart() {
+export default function ShotEfficiencyChart() {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const [shotData, setShotData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -113,7 +113,7 @@ export default function ShotChart() {
   if (loading) {
     return (
       <div className="flex justify-center items-center mt-6 w-full">
-        <progress data-theme='business' className="progress progress-success w-72"></progress>
+        <progress className="progress progress-accent w-72"></progress>
       </div>
     );
   }
@@ -164,7 +164,7 @@ export default function ShotChart() {
               shot.opponent
             } ${"(" + shot.opponent_team_score + ")"}<br>`
         ), // Add your information here
-        hoverinfo: "text",
+        hoverinfo: "textinfo",
       },
     ];
   });
@@ -174,7 +174,7 @@ export default function ShotChart() {
     method: "restyle",
     args: [
       "marker.opacity",
-      traces.map((_, j) => (j === i * 2 || j === i * 2 + 1 ? 1 : 0.1)),
+      traces.map((_, j) => (j === i * 2 || j === i * 2 + 1 ? 0.7 : 0.1)),
     ],
     label: team,
   }));
@@ -185,7 +185,7 @@ export default function ShotChart() {
   // Add a step for 'all'
   steps.unshift({
     method: "restyle",
-    args: ["marker.opacity", traces.map(() => 1)], // set opacity to 1 for all traces
+    args: ["marker.opacity", traces.map(() => 0.7)], // set opacity to 0.7 for all traces
     label: "All",
   });
 
@@ -201,6 +201,26 @@ export default function ShotChart() {
       pad: { t: 0 }, // this will increase the height of the slider
     },
   };
+
+  const ra = shotData.filter(shot => {if (shot.distance_ft <= 4){return true}})
+  const paint = shotData.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return true}})
+  const left = shotData.filter((shot) => {
+    if (shot.left <= 250) {
+      return true;
+    }
+  });
+  const right = shotData.filter((shot) => {
+    if (shot.left > 250) {
+      return true;
+    }
+  });
+  const leftMidRange = left.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return false } if (shot.shot_type == '2') {return true}})
+  const rightMidRange = right.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return false } if (shot.shot_type == '2') {return true}})
+  const rightCornerThree = right.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return false } if (shot.top > 140){return false} if (shot.shot_type == '3') {return true}})
+  const leftCornerThree = left.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return false } if (shot.top > 140){return false} if (shot.shot_type == '3') {return true}})
+  const rightWingThree = right.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return false } if (shot.top < 140){return false} if (shot.shot_type == '3') {return true}})
+  const leftWingThree = left.filter(shot => {if(shot.left > 170 && shot.left < 330 && shot.distance_ft > 4 && shot.top < 190){return false } if (shot.top < 140){return false} if (shot.shot_type == '3') {return true}})
+  // console.log(rightWingThree);
 
   return (
     <div className="flex flex-col justify-center items-center mt-6">

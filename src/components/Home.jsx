@@ -25,7 +25,7 @@ const Home = () => {
         Home
       </h1>
       <div className="overflow-x-auto w-auto" data-theme="winter">
-        <table className="table w-full text-center">
+        <table className="table table-zebra w-full text-center">
           {/* head */}
           <thead>
             <tr>

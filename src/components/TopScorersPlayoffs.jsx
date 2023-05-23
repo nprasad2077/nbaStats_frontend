@@ -99,7 +99,7 @@ const TopScorersPlayoffs = () => {
         />
       </div>
 
-      <h1 class="text-3xl font-semibold antialiased text-center mb-4">
+      <h1 class="text-3xl font-semibold antialiased text-center my-4">
         Top 20 Scorers by Total Points for {selectedSeason.season} Playoffs
       </h1>
       <div class="mt-4">
