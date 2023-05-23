@@ -97,7 +97,7 @@ const TopAssistsPlayoffs = () => {
         />
       </div>
 
-      <h1 class="text-3xl font-semibold antialiased text-center mb-4">
+      <h1 class="text-3xl font-semibold antialiased text-center my-4">
         Top 20 Players by Total Assists for {selectedSeason.season} Playoffs
       </h1>
 

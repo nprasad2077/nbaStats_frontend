@@ -100,7 +100,7 @@ const TopScorersTotals = () => {
         />
       </div>
 
-      <h1 className="text-3xl font-semibold antialiased text-center mb-4">
+      <h1 className="text-3xl font-semibold antialiased text-center my-4">
         Top 20 Scorers by Total Points for {selectedSeason.season} Season
       </h1>
       <div className="mt-4">
