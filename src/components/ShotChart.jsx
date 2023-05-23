@@ -113,7 +113,7 @@ export default function ShotChart() {
   if (loading) {
     return (
       <div className="flex justify-center items-center mt-6 w-full">
-        <progress className="progress progress-accent w-72"></progress>
+        <progress data-theme='business' className="progress progress-success w-72"></progress>
       </div>
     );
   }
