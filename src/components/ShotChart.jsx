@@ -5,7 +5,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
 const seasons = [
-  // { season: "2022-2023" },
+  { season: "2022-2023" },
   { season: "2021-2022" },
   { season: "2020-2021" },
   { season: "2019-2020" },
@@ -163,7 +163,7 @@ export default function ShotChart() {
             }<br>${shot.team} ${"(" + shot.lebron_team_score + ")"} vs. ${
               shot.opponent
             } ${"(" + shot.opponent_team_score + ")"}<br>`
-        ), // Add your information here
+        ), 
         hoverinfo: "text",
       },
     ];
@@ -174,7 +174,7 @@ export default function ShotChart() {
     method: "restyle",
     args: [
       "marker.opacity",
-      traces.map((_, j) => (j === i * 2 || j === i * 2 + 1 ? 1 : 0.1)),
+      traces.map((_, j) => (j === i * 2 || j === i * 2 + 1 ? .8 : 0.1)),
     ],
     label: team,
   }));
@@ -228,7 +228,7 @@ export default function ShotChart() {
               sizex: 500 * scaleFactor,
               sizey: 472 * scaleFactor,
               sizing: "stretch",
-              opacity: 1.0,
+              opacity: 1,
               layer: "below",
             },
           ],
