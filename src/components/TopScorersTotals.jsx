@@ -88,8 +88,9 @@ const TopScorersTotals = () => {
       `https://nba-stats-db.herokuapp.com/api/playerdata/topscorers/total/season/${tailEndSeason}/`
     )
       .then((response) => response.json())
-      .then((data) => setTopScorers(data.results));
+      .then((data) => setTopScorers(data.results.slice(0,20)));
   }, [selectedSeason]);
+
 
   return (
     <div className="text-center text-slate-600">
