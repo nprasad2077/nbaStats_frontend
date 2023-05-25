@@ -5,7 +5,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
 const seasons = [
-  // { season: "2022-2023" },
+  { season: "2022-2023" },
   { season: "2021-2022" },
   { season: "2020-2021" },
   { season: "2019-2020" },
@@ -19,6 +19,12 @@ const seasons = [
   { season: "2011-2012" },
   { season: "2010-2011" },
   { season: "2009-2010" },
+];
+
+const player_names = [
+  { name: "LeBron James" },
+  { name: "Stephen Curry" },
+  { name: "James Harden" },
 ];
 
 const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
@@ -78,11 +84,70 @@ const DropDownSeason = ({ selectedSeason, setSelectedSeason }) => {
   );
 };
 
+const DropDownPlayer = ({ player, setPlayer }) => {
+  return (
+    <div className="w-72 mt-4 text-black">
+      <Listbox value={player} onChange={setPlayer}>
+        <div className="relative mt-1">
+          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-300 sm:text-sm">
+            <span className="block truncate">{player.name}</span>
+            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              <ChevronUpDownIcon
+                className="h-5 w-5 text-gray-400"
+                aria-hidden="true"
+              />
+            </span>
+          </Listbox.Button>
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              {player_names.map((season, seasonIdx) => (
+                <Listbox.Option
+                  key={seasonIdx}
+                  className={({ active }) =>
+                    `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                      active ? "bg-indigo-100 text-indigo-900" : "text-gray-900"
+                    }`
+                  }
+                  value={season}
+                >
+                  {({ selected }) => (
+                    <>
+                      <span
+                        className={`block truncate ${
+                          selected ? "font-medium" : "font-normal"
+                        }`}
+                      >
+                        {season.name}
+                      </span>
+                      {selected ? (
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-indigo-600">
+                          <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                        </span>
+                      ) : null}
+                    </>
+                  )}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </Transition>
+        </div>
+      </Listbox>
+    </div>
+  );
+};
+
 export default function ShotChart() {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const [shotData, setShotData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [player, setPlayer] = useState("LeBron James");
+  const [player, setPlayer] = useState(player_names[0]);
+
+  console.log(player.name);
 
   const fetchData = async (url) => {
     const result = await axios.get(url);
@@ -97,8 +162,9 @@ export default function ShotChart() {
   useEffect(() => {
     setLoading(true);
     const tailEndSeason = selectedSeason.season.split("-")[1];
+    const name = player.name;
     fetchData(
-      `https://nba-stats-db.herokuapp.com/api/shot_chart_data/${player}/${tailEndSeason}/`
+      `https://nba-stats-db.herokuapp.com/api/shot_chart_data/${name}/${tailEndSeason}/`
     )
       .then((data) => {
         setShotData(data);
@@ -108,12 +174,15 @@ export default function ShotChart() {
         console.log(err);
         setLoading(false);
       });
-  }, [selectedSeason]);
+  }, [selectedSeason, player]);
 
   if (loading) {
     return (
       <div className="flex justify-center items-center mt-6 w-full">
-        <progress data-theme='business' className="progress progress-success w-72"></progress>
+        <progress
+          data-theme="business"
+          className="progress progress-success w-72"
+        ></progress>
       </div>
     );
   }
@@ -163,7 +232,7 @@ export default function ShotChart() {
             }<br>${shot.team} ${"(" + shot.lebron_team_score + ")"} vs. ${
               shot.opponent
             } ${"(" + shot.opponent_team_score + ")"}<br>`
-        ), // Add your information here
+        ),
         hoverinfo: "text",
       },
     ];
@@ -174,7 +243,7 @@ export default function ShotChart() {
     method: "restyle",
     args: [
       "marker.opacity",
-      traces.map((_, j) => (j === i * 2 || j === i * 2 + 1 ? 1 : 0.1)),
+      traces.map((_, j) => (j === i * 2 || j === i * 2 + 1 ? 0.8 : 0.1)),
     ],
     label: team,
   }));
@@ -210,7 +279,7 @@ export default function ShotChart() {
           sliders: [slider],
           xaxis: { range: [0, 500 * scaleFactor], showticklabels: false },
           yaxis: { range: [0, 472 * scaleFactor], showticklabels: false },
-          title: `${player} ${
+          title: `${player.name} ${
             selectedSeason.season.split("-")[1]
           } Season/Playoff Shot Chart`,
           width: 500 * scaleFactor,
@@ -228,17 +297,22 @@ export default function ShotChart() {
               sizex: 500 * scaleFactor,
               sizey: 472 * scaleFactor,
               sizing: "stretch",
-              opacity: 1.0,
+              opacity: 1,
               layer: "below",
             },
           ],
         }}
       />
-      <div className="mt-10">
-        <DropDownSeason
-          selectedSeason={selectedSeason}
-          setSelectedSeason={setSelectedSeason}
-        />
+      <div className="mt-10 flex flex-row justify-around">
+        <div className="mr-4">
+          <DropDownPlayer player={player} setPlayer={setPlayer} />
+        </div>
+        <div className="ml-4">
+          <DropDownSeason
+            selectedSeason={selectedSeason}
+            setSelectedSeason={setSelectedSeason}
+          />
+        </div>
       </div>
     </div>
   );
