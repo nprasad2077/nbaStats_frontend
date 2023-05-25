@@ -87,7 +87,7 @@ const TopScorersPlayoffs = () => {
       `https://nba-stats-db.herokuapp.com/api/playerdata/topscorers/playoffs/${tailEndSeason}/`
     )
       .then((response) => response.json())
-      .then((data) => setTopScorers(data.results));
+      .then((data) => setTopScorers(data.results.slice(0,20)));
   }, [selectedSeason]);
 
   return (
