@@ -3,16 +3,7 @@ import ChartRace from "./ChartRace";
 
 const BarChartRace = () => {
   const [topPlayers, setTopPlayers] = useState([]);
-  const dummyData = [
-    { name: "A", value: 12 },
-    { name: "B", value: 16 },
-    { name: "C", value: 14 },
-    { name: "D", value: 14 },
-    { name: "E", value: 32 },
-    { name: "F", value: 45 },
-    { name: "G", value: 12 },
-    // More data...
-  ];
+
 
   function range(start, end) {
     return Array(end - start + 1)
@@ -42,9 +33,29 @@ const BarChartRace = () => {
 
   console.log(topPlayers);
 
+  // Restructure Data
+
+  let restructuredData = []
+  for (let i=0;i < topPlayers.length;i++){
+    let season = topPlayers[i]
+
+    for(let j=0;j<season.length;j++){
+      let player = season[j]
+      restructuredData.push({
+        name: player.player_name,
+        value: player.PTS,
+        year: player.season,
+      })
+
+    }
+  }
+
+  console.log(restructuredData);
+
+
   return (
     <div>
-      <ChartRace data={dummyData} />
+      <ChartRace />
     </div>
   );
 };
