@@ -18,6 +18,7 @@ import TopAssistsTotals from "./components/TopAssistsTotals.jsx";
 import TopReboundsTotals from "./components/TopReboundsTotals.jsx";
 import LeBronJamesShotChart from "./components/LeBronJamesShotChart.jsx";
 import NavBar from "./components/NavBar";
+import BarChartRace from "./components/BarChartRace";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             path="/lebron_james_shot_chart"
             element={<LeBronJamesShotChart />}
           />
+          <Route path='/bar_chart_race' element={<BarChartRace />} />
         </Routes>
       </div>
     </div>
