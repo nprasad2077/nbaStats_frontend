@@ -17,14 +17,14 @@ const BarChartRace = () => {
     const fetchSeasonData = async () => {
       const allSeasonsData = [];
       const cumulativeData = {};
-
+  
       for (const season of seasons) {
         const response = await fetch(
           `https://nba-stats-db.herokuapp.com/api/playerdata/topscorers/total/season/${season}`
         );
         const data = await response.json();
         allSeasonsData.push(data.results);
-
+  
         data.results.forEach((player) => {
           if (cumulativeData[player.player_name]) {
             cumulativeData[player.player_name] += player.PTS;
@@ -32,13 +32,15 @@ const BarChartRace = () => {
             cumulativeData[player.player_name] = player.PTS;
           }
         });
-
-        setCumulativeScores({ ...cumulativeData });
       }
+  
+      // Set the state only once, after all the data has been loaded
+      setCumulativeScores({ ...cumulativeData });
     };
-
+  
     fetchSeasonData().catch((error) => console.log(error));
   }, []);
+  
 
   // Update current season every interval
   useEffect(() => {
