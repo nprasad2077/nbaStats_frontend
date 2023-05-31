@@ -16,15 +16,15 @@ const BarChartRace = () => {
   useEffect(() => {
     const fetchSeasonData = async () => {
       const allSeasonsData = [];
-      const cumulativeData = {};
-  
+      let cumulativeData = {};
+
       for (const season of seasons) {
         const response = await fetch(
           `https://nba-stats-db.herokuapp.com/api/playerdata/topscorers/total/season/${season}`
         );
         const data = await response.json();
         allSeasonsData.push(data.results);
-  
+
         data.results.forEach((player) => {
           if (cumulativeData[player.player_name]) {
             cumulativeData[player.player_name] += player.PTS;
@@ -32,15 +32,25 @@ const BarChartRace = () => {
             cumulativeData[player.player_name] = player.PTS;
           }
         });
+
+        // Store the cumulative scores for each season
+        setCumulativeScores((prevData) => ({
+          ...prevData,
+          [season]: { ...cumulativeData },
+        }));
       }
-  
-      // Set the state only once, after all the data has been loaded
-      setCumulativeScores({ ...cumulativeData });
     };
-  
+
     fetchSeasonData().catch((error) => console.log(error));
   }, []);
-  
+
+  const chartData = Object.entries(cumulativeScores[currentSeason] || {}).map(
+    ([player_name, value]) => ({
+      player_name,
+      value,
+      color: "steelblue",
+    })
+  );
 
   // Update current season every interval
   useEffect(() => {
@@ -61,22 +71,7 @@ const BarChartRace = () => {
 
   console.log(cumulativeScores, currentSeason);
 
-  return (
-    <div>
-      {Object.keys(cumulativeScores).length > 0 && (
-        <ChartRace
-          data={Object.entries(cumulativeScores).map(
-            ([player_name, value]) => ({
-              player_name,
-              value,
-              color: "steelblue",
-            })
-          )}
-          currentSeason={currentSeason}
-        />
-      )}
-    </div>
-  );
+  return <ChartRace data={chartData} currentSeason={currentSeason} />;
 };
 
 export default BarChartRace;
