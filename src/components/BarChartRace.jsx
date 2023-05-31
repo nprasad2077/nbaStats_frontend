@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import ChartRace from "./ChartRace";
 
 const BarChartRace = () => {
-  const [topPlayers, setTopPlayers] = useState([]);
-
+  const [cumulativeScores, setCumulativeScores] = useState({});
+  const [currentSeason, setCurrentSeason] = useState(2010);
 
   function range(start, end) {
     return Array(end - start + 1)
@@ -16,6 +16,7 @@ const BarChartRace = () => {
   useEffect(() => {
     const fetchSeasonData = async () => {
       const allSeasonsData = [];
+      const cumulativeData = {};
 
       for (const season of seasons) {
         const response = await fetch(
@@ -23,39 +24,55 @@ const BarChartRace = () => {
         );
         const data = await response.json();
         allSeasonsData.push(data.results);
-      }
 
-      setTopPlayers(allSeasonsData);
+        data.results.forEach((player) => {
+          if (cumulativeData[player.player_name]) {
+            cumulativeData[player.player_name] += player.PTS;
+          } else {
+            cumulativeData[player.player_name] = player.PTS;
+          }
+        });
+
+        setCumulativeScores({ ...cumulativeData });
+      }
     };
 
     fetchSeasonData().catch((error) => console.log(error));
   }, []);
 
-  console.log(topPlayers);
+  // Update current season every interval
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSeason((season) => {
+        const nextSeasonIndex = seasons.indexOf(season) + 1;
+        if (nextSeasonIndex < seasons.length) {
+          return seasons[nextSeasonIndex];
+        } else {
+          clearInterval(interval);
+          return season;
+        }
+      });
+    }, 2000); // Every 2 seconds
 
-  // Restructure Data
+    return () => clearInterval(interval);
+  }, [seasons]);
 
-  let restructuredData = []
-  for (let i=0;i < topPlayers.length;i++){
-    let season = topPlayers[i]
-
-    for(let j=0;j<season.length;j++){
-      let player = season[j]
-      restructuredData.push({
-        name: player.player_name,
-        value: player.PTS,
-        year: player.season,
-      })
-
-    }
-  }
-
-  console.log(restructuredData);
-
+  console.log(cumulativeScores, currentSeason);
 
   return (
     <div>
-      <ChartRace />
+      {Object.keys(cumulativeScores).length > 0 && (
+        <ChartRace
+          data={Object.entries(cumulativeScores).map(
+            ([player_name, value]) => ({
+              player_name,
+              value,
+              color: "steelblue",
+            })
+          )}
+          currentSeason={currentSeason}
+        />
+      )}
     </div>
   );
 };
