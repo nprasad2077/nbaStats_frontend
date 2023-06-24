@@ -5,6 +5,7 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import TopScorersChartPlayoffs from "./TopScorersChartPlayoffs";
 
 const seasons = [
+  { season: "2022-2023" },
   { season: "2021-2022" },
   { season: "2020-2021" },
   { season: "2019-2020" },
@@ -87,7 +88,7 @@ const TopScorersPlayoffs = () => {
       `https://nba-stats-db.herokuapp.com/api/playerdata/topscorers/playoffs/${tailEndSeason}/`
     )
       .then((response) => response.json())
-      .then((data) => setTopScorers(data.results.slice(0,20)));
+      .then((data) => setTopScorers(data.results.slice(0, 20)));
   }, [selectedSeason]);
 
   return (
