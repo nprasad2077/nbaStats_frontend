@@ -5,6 +5,7 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import TopAssistsChartPlayoffs from "./TopAssistsChartPlayoffs";
 
 const seasons = [
+  { season: "2022-2023" },
   { season: "2021-2022" },
   { season: "2020-2021" },
   { season: "2019-2020" },

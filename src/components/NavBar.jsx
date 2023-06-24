@@ -94,6 +94,12 @@ const NavBar = () => {
           >
             Points Per Game Histogram
           </Link>
+          {/* <Link
+            to="/bar_chart_race"
+            className="btn btn-ghost normal-case text-base mt-2 lg:mt-0 lg:ml-2"
+          >
+            Bar Chart Race
+          </Link> */}
         </div>
       </div>
     </div>

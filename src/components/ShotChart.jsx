@@ -303,7 +303,7 @@ export default function ShotChart() {
           ],
         }}
       />
-      <div className="mt-10 flex flex-row justify-around">
+      <div className="mt-6 flex flex-row justify-around">
         <div className="mr-4">
           <DropDownPlayer player={player} setPlayer={setPlayer} />
         </div>
