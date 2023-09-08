@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
+import { Analytics } from '@vercel/analytics/react';
 
 // Components
 import Home from "./components/Home.jsx";
@@ -24,6 +25,7 @@ function App() {
   return (
     <div class="bg-gray-100 min-h-screen">
       <NavBar />
+      <Analytics />
       <div className="container mx-auto">
         <Routes>
           <Route exact path="/" element={<Home />} />
